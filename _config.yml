@@ -1,0 +1,22 @@
+title: Andreas Mausch Cheatsheets
+email: andreas.mausch@gmail.com
+description: ""
+baseurl: ""
+url: "https://cheatsheets.andreas-mausch.de"
+
+markdown: kramdown
+permalink: pretty
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor/
+
+collections:
+  cheatsheets:
+    output: true
+    permalink: /:collection/:name
