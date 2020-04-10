@@ -19,4 +19,4 @@ exclude:
 collections:
   cheatsheets:
     output: true
-    permalink: /:collection/:name
+    permalink: /:name
