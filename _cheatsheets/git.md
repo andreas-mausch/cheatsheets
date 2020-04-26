@@ -56,7 +56,7 @@ git push -u origin --all
 
 ```bash
 git config --global alias.lg "log --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S' --format=format:'%C(blue)%h%C(reset) %C(dim white)%ad%C(reset) %C(green)%<(8,trunc)%an%C(reset)%C(yellow)%d%C(reset) %C(white)%s%C(reset)'"
-git config --global alias.tidy "! git branch --merged origin/master | grep -v \* | xargs --no-run-if-empty git branch -D && git remote update origin --prune"
+git config --global alias.tidy "! git branch --merged origin/master | grep -v \* | xargs --no-run-if-empty git branch -D && git remote update origin --prune && git tag -l | xargs git tag -d && git fetch --tags"
 git config --global alias.first "hash-object -t tree /dev/null"
 git config --global alias.tags "lg --tags --no-walk"
 ```
