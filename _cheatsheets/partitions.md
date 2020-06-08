@@ -10,5 +10,5 @@ section:
       Folder size: du -sh .
   - name: lsblk
     commands:
-      Determine filesystem: lsblk -o +fstype
+      Determine filesystem: lsblk -f
 ---
