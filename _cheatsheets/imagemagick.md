@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: image-processing webp
+tags: image-processing gif webp
 section:
   - name: Image modification
     commands:
@@ -12,4 +12,7 @@ section:
   - name: Image information
     commands:
       Quality of jpeg: "magick identify -format '%Q' <filename.jpg>"
+  - name: Animation
+    commands:
+      Create gif: "magick convert -delay 30 -loop 0 -resize 50% *.jpg animation.gif"
 ---
