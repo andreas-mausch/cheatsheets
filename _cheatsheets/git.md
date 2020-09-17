@@ -10,6 +10,10 @@ section:
     commands:
       Delete merged local branches: git branch --merged origin/master | grep -v \* | xargs git branch -D
       Update remote branches: git remote update origin --prune
+  - name: Filter commits
+    commands:
+      by Date and author: git lg --after={2016-09-01} --before={2016-10-01} --author="Andreas Mausch"
+      since/until: git lg --since="2 year ago" [--until="3 weeks ago"]
   - name: Feature branches
     commands:
       Count commits on feature branch: git rev-list [--no-merges] --count origin/master..HEAD
