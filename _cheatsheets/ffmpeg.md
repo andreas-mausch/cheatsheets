@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: record-screen screencast
+tags: record-screen screencast mp4 av1 opus webm
 section:
   - name: Record screencasts (lossless)
     commands:
@@ -11,4 +11,9 @@ section:
   - name: Convert
     commands:
       For WhatsApp: ffmpeg -i input.mp4 -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p -preset slow -crf 22 output.mp4
+      AV1: ffmpeg -i input.mp4 -c:v libaom-av1 -c:a libopus -b:a 96k output.webm
+  - name: Increase volume
+    commands:
+      Detect max_volume: ffmpeg -i input.mp4 -af "volumedetect" -vn -sn -dn -f null /dev/null
+      Increase volume: ffmpeg -i input.mp4 -af "volume=5dB" -c:v copy -c:a aac -b:a 192k output.mp4
 ---
