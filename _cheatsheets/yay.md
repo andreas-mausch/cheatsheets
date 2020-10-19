@@ -18,6 +18,9 @@ section:
       package details: yay -Qii <package>
       list files: yay -Ql <package>
       orphans: yay -Qdt
+  - name: Clean-up
+    commands:
+      clear cache: yay -Sc
   - name: Official repo vs. AUR
     commands:
       repo: yay -[...] --repo
