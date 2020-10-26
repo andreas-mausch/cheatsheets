@@ -16,4 +16,10 @@ section:
     commands:
       Detect max_volume: ffmpeg -i input.mp4 -af "volumedetect" -vn -sn -dn -f null /dev/null
       Increase volume: ffmpeg -i input.mp4 -af "volume=5dB" -c:v copy -c:a aac -b:a 192k output.mp4
+  - name: Cut video
+    commands:
+      Start timestamp and duration: ffmpeg -ss 00:00:30.0 -i input.mp4 -c copy -t 00:00:44.0 output.mp4
+  - name: Resize/scale video
+    commands:
+      Resize to 1280 pixels width: ffmpeg -i input.mp4 -vf scale=1280:-4 output.mp4
 ---
