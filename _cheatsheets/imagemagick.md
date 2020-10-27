@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: image-processing gif webp
+tags: image-processing gif webp mogrify convert
 section:
   - name: Image modification
     commands:
