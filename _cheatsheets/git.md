@@ -67,6 +67,7 @@ git config --global alias.tidy.tags "! git tag -l | xargs git tag -d && git fetc
 git config --global alias.tidy "! git tidy.branches && git tidy.tags"
 git config --global alias.first "hash-object -t tree /dev/null"
 git config --global alias.tags "lg --tags --no-walk"
+git config --global alias.branches "! git for-each-ref --format='%(refname)' | xargs -i sh -c 'ahead=\$(git rev-list --count origin/master..{}); behind=\$(git rev-list --count {}..origin/master); printf \"%4s %4s {}\n\" \"+\$ahead\" \"-\$behind\"'"
 ```
 
 Example usage:
