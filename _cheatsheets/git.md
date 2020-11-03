@@ -18,6 +18,7 @@ section:
   - name: Feature branches
     commands:
       Count commits on feature branch: git rev-list [--no-merges] --count origin/master..HEAD
+      Table of all branches and their commit count compared to origin/master: git for-each-ref --format='%(refname)' | xargs -i sh -c 'ahead=$(git rev-list --count origin/master..{}); behind=$(git rev-list --count {}..origin/master); printf "%4s %4s {}\n" "+$ahead" "-$behind"'
   - name: git gui
     shortcuts:
       Stage file: <kbd>CTRL</kbd>+<kbd>T</kbd>
