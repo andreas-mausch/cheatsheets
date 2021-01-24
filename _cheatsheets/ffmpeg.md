@@ -13,14 +13,17 @@ section:
     commands:
       For WhatsApp: ffmpeg -i input.mp4 -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p -preset slow -crf 22 output.mp4
       AV1: ffmpeg -i input.mp4 -c:v libaom-av1 -c:a libopus -b:a 96k output.webm
-  - name: Increase volume
-    commands:
-      Detect max_volume: ffmpeg -i input.mp4 -af "volumedetect" -vn -sn -dn -f null /dev/null
-      Increase volume: ffmpeg -i input.mp4 -af "volume=5dB" -c:v copy -c:a aac -b:a 192k output.mp4
   - name: Cut video
     commands:
       Start timestamp and duration: ffmpeg -ss 00:00:30.0 -i input.mp4 -c copy -t 00:00:44.0 output.mp4
   - name: Resize/scale video
     commands:
       Resize to 1280 pixels width: ffmpeg -i input.mp4 -vf scale=1280:-4 output.mp4
+  - name: Increase volume
+    commands:
+      Detect max_volume: ffmpeg -i input.mp4 -af "volumedetect" -vn -sn -dn -f null /dev/null
+      Increase volume: ffmpeg -i input.mp4 -af "volume=5dB" -c:v copy -c:a aac -b:a 96k output.mp4
+  - name: Reduce audio noise
+    commands:
+      Reduce noise: ffmpeg -i input.mp4 -af "highpass=f=200, lowpass=f=2500, volume=45dB, afftdn=nf=-25" -c:v copy -c:a aac -b:a 96k output.mp4
 ---
