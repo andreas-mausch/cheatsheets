@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: filetypes
+tags: filetypes files search duplicates same fdupes
 section:
   - name: File types
     commands:
@@ -10,4 +10,7 @@ section:
   - name: Clean up
     commands:
       Delete node_modules recursively: find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
+  - name: Search for duplicates in two directories
+    commands:
+      Sorted by filename: fdupes --recurse --size --time --order=name ./folder1/ ./folder2/ > fdupes-sort-by-name.txt
 ---
