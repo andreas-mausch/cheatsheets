@@ -26,4 +26,7 @@ section:
   - name: Reduce audio noise
     commands:
       Reduce noise: ffmpeg -i input.mp4 -af "highpass=f=200, lowpass=f=2500, volume=45dB, afftdn=nf=-25" -c:v copy -c:a aac -b:a 96k output.mp4
+  - name: Capture webcam frame
+    commands:
+      Reduce noise: ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -ss 0:0:2 -frames 1 /tmp/out.jpg
 ---
