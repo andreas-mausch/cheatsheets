@@ -20,4 +20,8 @@ section:
     commands:
       Colors: "magick convert input.png +dither -colors 16 output.png"
       Posterize: "magick convert input.png -posterize 8 output.png"
+  - name: Diff image
+    commands:
+      Show differences in red: "magick compare image1.png image2.png -compose src diff.png"
+      Subtract image: "magick composite image1.png image2.png -compose difference diff.png"
 ---
