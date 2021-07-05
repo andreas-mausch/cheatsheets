@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: filetypes files search duplicates same fdupes
+tags: filetypes files search duplicates same fdupes chmod
 section:
   - name: File types
     commands:
@@ -13,4 +13,7 @@ section:
   - name: Search for duplicates in two directories
     commands:
       Sorted by filename: fdupes --recurse --size --time --order=name ./folder1/ ./folder2/ > fdupes-sort-by-name.txt
+  - name: File permissions
+    commands:
+      Show linux file permissions in numeric format (e.g. 755): find . -maxdepth 1 -printf "%m %f\n"
 ---
