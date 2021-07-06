@@ -8,6 +8,10 @@ section:
       install: yay -S <package>
       "uninstall (-n: no backup files; -s: remove dependencies)": yay -Rns <package>
       system update: yay -Syyu
+  - name: Mirrors
+    commands:
+      select fastest: sudo pacman-mirrors --fasttrack
+      select by country: sudo pacman-mirrors --country Germany,France,Austria
   - name: Search repo
     commands:
       search package: yay -Ss <package>
