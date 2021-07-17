@@ -29,4 +29,7 @@ section:
   - name: Capture webcam frame
     commands:
       Reduce noise: ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -ss 0:0:2 -frames 1 /tmp/out.jpg
+  - name: Audio
+    commands:
+      Extract audio stream (use ffprobe before): ffmpeg -i input.mp4 -vn -acodec copy output.aac
 ---
