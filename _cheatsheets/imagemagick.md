@@ -13,6 +13,8 @@ section:
   - name: Image information
     commands:
       Quality of jpeg: "magick identify -format '%Q' <filename.jpg>"
+      Exif tags and general info: magick identify -verbose input.jpg
+      Signature hash of image (pixels only, metadata is ignored, see links below): magick identify -format %# input.jpg
   - name: Animation
     commands:
       Create gif: "magick convert -delay 30 -loop 0 -resize 50% *.jpg animation.gif"
@@ -25,3 +27,8 @@ section:
       Show differences in red: "magick compare image1.png image2.png -compose src diff.png"
       Subtract image: "magick composite image1.png image2.png -compose difference diff.png"
 ---
+
+
+See here: https://imagemagick.org/script/command-line-options.php#format_identify_
+
+and here: https://imagemagick.org/script/escape.php
