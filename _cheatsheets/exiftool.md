@@ -18,6 +18,9 @@ section:
     commands:
       List thumbnails: exiftool -a -preview:all image.jpg
       Extract all types of preview images: "exiftool -a -b -W %d%f_%t%-c.%s -preview:all image.jpg"
+  - name: XMP
+    commands:
+      Show raw xmp xml data: exiftool -xmp -b image.jpg
 ---
 
 - -a: Allow duplicate tags to be extracted
