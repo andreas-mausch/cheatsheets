@@ -14,4 +14,16 @@ section:
   - name: Location
     commands:
       Create .gpx track from images (via gpx.fmt): "exiftool -if '$datetimeoriginal' -fileOrder datetimeoriginal -d \"%Y-%m-%dT%H:%M:%S+02:00\" -p ./gpx.fmt ./*.jpg > output.gpx"
+  - name: Thumbnail
+    commands:
+      List thumbnails: exiftool -a -preview:all image.jpg
+      Extract all types of preview images: "exiftool -a -b -W %d%f_%t%-c.%s -preview:all image.jpg"
 ---
+
+- -a: Allow duplicate tags to be extracted
+- -b: Output requested metadata in binary format
+- -d: Set format for date/time values
+- -p: Print output in specified format
+- -s: Short output format (To see the tag names instead of the descriptions, use -s)
+- -s3: Print values only (no tag names)
+- -W: With -W, a new output file is created for each extracted tag
