@@ -7,6 +7,7 @@ section:
       Print raw tag names: "exiftool -s <FILENAME>"
       Print values only: "exiftool -s3 <FILENAME>"
       Print camera models: exiftool -model -s3 -r .
+      Print jpeg structure (markers): exiv2 -pS image.jpg
   - name: Find
     commands:
       Find files without exif data: "exiftool -s3 -filepath -q -if 'not $exif:all' -r <YOUR_DIRECTORY_TO_SCAN>"
@@ -21,6 +22,7 @@ section:
   - name: XMP
     commands:
       Show raw xmp xml data: exiftool -xmp -b image.jpg
+      Show raw xmp xml data: exiv2 -pX image.jpg
 ---
 
 - -a: Allow duplicate tags to be extracted
