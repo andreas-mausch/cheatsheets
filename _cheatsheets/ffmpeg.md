@@ -32,4 +32,8 @@ section:
   - name: Audio
     commands:
       Extract audio stream (use ffprobe before): ffmpeg -i input.mp4 -vn -acodec copy output.aac
+      Drop audio stream: ffmpeg -i input.mp4 -an output.mp4
+  - name: Speed
+    commands:
+      Speed up video: ffmpeg -i input.mp4 -filter:v "setpts=PTS/20" output.mp4
 ---
