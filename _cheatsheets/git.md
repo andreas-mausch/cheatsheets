@@ -23,6 +23,12 @@ section:
     commands:
       Count commits on feature branch: git rev-list [--no-merges] --count origin/master..HEAD
       Table of all branches and their commit count compared to origin/master: git for-each-ref refs/heads refs/remotes/origin --format='%(refname:short)' | xargs -i sh -c 'ahead=$(git rev-list --count origin/master..{}); behind=$(git rev-list --count {}..origin/master); printf "%4s %4s {}\n" "+$ahead" "-$behind"'
+  - name: Create patch
+    commands:
+      Specific commit: git format-patch -1 <hash>
+      Unstaged changes: git diff
+      Staged changes: git diff --cached
+      Both (unstaged and staged) changes: git diff HEAD
   - name: git gui
     shortcuts:
       Stage file: <kbd>CTRL</kbd>+<kbd>T</kbd>
