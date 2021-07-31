@@ -5,7 +5,12 @@ layout: default
 
   <a href="{{ site.baseurl }}{% link index.html %}" class="cheatsheet-link">&lt;- Back</a>
 
-  <h1>{{ page.title | downcase }}</h1>
+  <h1>
+    {% if page.logo %}
+      <img class="cheatsheet-logo" src="{{ page.logo }}">
+    {% endif %}
+    {{ page.title | downcase }}
+  </h1>
 
   {% for section in page.section %}
   <div class="section">
