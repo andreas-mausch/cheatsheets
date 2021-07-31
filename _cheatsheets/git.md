@@ -17,7 +17,7 @@ section:
       Complete repo: git bundle create repo.bundle --all
   - name: List
     commands:
-      Count commits per author: git shortlog -s -n -e --all --no-merges
+      Count commits per author: git shortlog --summary --numbered --email --no-merges [--all]
   - name: Filter commits
     commands:
       by Date and author: git lg --after={2016-09-01} --before={2016-10-01} --author="Andreas Mausch"
