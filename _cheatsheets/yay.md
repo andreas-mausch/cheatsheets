@@ -23,6 +23,7 @@ section:
       package details: yay -Qii <package>
       list files: yay -Ql <package>
       orphans: yay -Qdt
+      manually installed (list all aur): pacman -Qm
   - name: Clean-up
     commands:
       clear cache: yay -Sc
