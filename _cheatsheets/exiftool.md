@@ -5,9 +5,9 @@ logo: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAC1klE
 section:
   - name: Print
     commands:
-      Print raw tag names: "exiftool -s <FILENAME>"
+      Print raw tag names: "exiftool -short -groupNames <FILENAME>"
       Print values only: "exiftool -s3 <FILENAME>"
-      Print camera models: exiftool -model -s3 -r .
+      Print camera models: exiftool -model -s3 -recurse .
       Print jpeg structure (markers): exiv2 -pS image.jpg
       Print image structure recursively (tiff, only on debug build): exiv2 -pR image.jpg
       Print all tags: exiv2 -pa image.jpg
