@@ -17,7 +17,8 @@ adb pull -a /sdcard/Snapseed/
 ### Whatsapp
 
 ```
-adb pull -a /sdcard/WhatsApp/
+adb pull -a /sdcard/Android/media/com.whatsapp/
+cd com.whatsapp
 rsync -rltvh0 --stats ./WhatsApp/Media/ "./2013-01-01 WhatsApp Media/Media" --ignore-existing
 zip -r0 "2013-01-01 WhatsApp Media.zip" .
 ```
