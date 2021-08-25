@@ -32,6 +32,9 @@ section:
       Unstaged changes: git diff
       Staged changes: git diff --cached
       Both (unstaged and staged) changes: git diff HEAD
+  - name: Encoding
+    commands:
+      Show umlauts in filenames: git config --global core.quotepath false
   - name: git gui
     shortcuts:
       Stage file: <kbd>CTRL</kbd>+<kbd>T</kbd>
