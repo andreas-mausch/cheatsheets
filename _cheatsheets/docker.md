@@ -9,4 +9,8 @@ section:
   - name: stats
     commands:
       sort by memory usage: docker stats --no-stream --format "table {{.Name}}\t{{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}" | LC_ALL=en_US.utf8 sort -k 4 -h
+  - name: compose
+    commands:
+      run command inside container: docker-compose exec container bash
+      delete everything (including volumes): docker-compose down --volumes
 ---
