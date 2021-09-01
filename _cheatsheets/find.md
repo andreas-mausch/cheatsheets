@@ -16,4 +16,7 @@ section:
   - name: File permissions
     commands:
       Show linux file permissions in numeric format (e.g. 755): find . -maxdepth 1 -printf "%m %f\n"
+  - name: Last change
+    commands:
+      Show all files changed within the last year: find . -ctime 365 2>/dev/null
 ---
