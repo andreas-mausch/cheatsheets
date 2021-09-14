@@ -17,6 +17,9 @@ section:
   - name: swarm
     commands:
       list nodes: docker node ls
+      list stacks: docker stack ls
+      list services: docker service ls
       drain node: docker node update --availability drain <id>
       activate node: docker node update --availability active <id>
+      logs: docker service logs --since=30m -f <service_name>
 ---
