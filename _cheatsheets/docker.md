@@ -14,4 +14,9 @@ section:
     commands:
       run command inside container: docker-compose exec container bash
       delete everything (including volumes): docker-compose down --volumes
+  - name: swarm
+    commands:
+      list nodes: docker node ls
+      drain node: docker node update --availability drain <id>
+      activate node: docker node update --availability active <id>
 ---
