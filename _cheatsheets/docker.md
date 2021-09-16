@@ -21,6 +21,7 @@ section:
       list nodes: docker node ls
       list stacks: docker stack ls
       list services: docker service ls
+      show errors during deployment (image not found etc.): docker service ps --no-trunc <service_name>
       drain node: docker node update --availability drain <id>
       activate node: docker node update --availability active <id>
       logs: docker service logs --since=30m -f <service_name>
