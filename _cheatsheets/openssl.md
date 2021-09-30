@@ -7,4 +7,6 @@ section:
     commands:
       Show certificate information from file: openssl x509 -text -noout -in certificate.crt
       Show certificate information from website: openssl s_client -showcerts -connect google.com:443 </dev/null 2>/dev/null
+      .p12 info: openssl pkcs12 -nokeys -info -in certificate.p12
+      .p12 enddate: openssl pkcs12 -in certificate.p12 -nodes | openssl x509 -noout -enddate
 ---
