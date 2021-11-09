@@ -36,4 +36,8 @@ section:
   - name: Speed
     commands:
       Speed up video: ffmpeg -i input.mp4 -filter:v "setpts=PTS/20" output.mp4
+  - name: Subtitles
+    commands:
+      Embed subtitles: ffmpeg -i input.mp4 -i english.vtt -c copy -c:s mov_text -metadata:s:s:0 language=eng output.mp4
+      Embed subtitles (multiple languages): ffmpeg -i input.mp4 -i english.vtt -i german.vtt -map 0 -map 1:s -map 2:s -c copy -c:s mov_text -c:s mov_text -metadata:s:s:0 language=eng -metadata:s:s:1 language=ger output.mp4
 ---
