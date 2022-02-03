@@ -15,6 +15,9 @@ section:
   - name: ps
     commands:
       Find testcontainers: docker ps --filter "label=org.testcontainers=true"
+  - name: inspect
+    commands:
+      Health: docker inspect --format='{{json .State.Health}}' container_name
   - name: compose
     commands:
       run command inside container: docker-compose exec container bash
