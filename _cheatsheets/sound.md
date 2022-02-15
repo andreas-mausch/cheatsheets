@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: pacmd pactl audio hdmi alsa
+tags: pacmd pactl audio pulseaudio hdmi alsa
 section:
   - name: List
     commands:
