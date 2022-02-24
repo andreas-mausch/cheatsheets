@@ -24,6 +24,10 @@ section:
     commands:
       run: docker run -it --name rabbitmq --rm -p 5672:5672 -p 15672:15672 rabbitmq:3.8-management
       rabbitmqadmin: docker exec -it rabbitmq rabbitmqadmin list exchanges
+  - name: Plugins
+    commands:
+      list: rabbitmq-plugins list
+      enable: rabbitmq-plugins enable rabbitmq_shovel rabbitmq_shovel_management
 ---
 
 `durable` queues and exchanges survive a restart.
