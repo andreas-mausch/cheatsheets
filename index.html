@@ -12,15 +12,19 @@ title: Cheat sheets
     <li>
       <a href="{{ cheatsheet.url }}">
         {% if cheatsheet.logo %}
-          <img class="cheatsheet-logo" src="{{ cheatsheet.logo }}">
+        <img class="cheatsheet-logo" src="{{ cheatsheet.logo }}">
         {% else %}
-          <span class="cheatsheet-logo"></span>
+        <span class="cheatsheet-logo"></span>
         {% endif %}
-        <span class="cheatsheet-title">{{ cheatsheet.title | downcase }}</span>
+        <div class="cheatsheet-description">
+          <span class="cheatsheet-title">{{ cheatsheet.title | downcase }}</span>
 
-        {% for tag in cheatsheet.tags %}
-        <span class="cheatsheet-tag">#{{ tag }}</span>
-        {% endfor %}
+          <div class=""cheatsheet-tags">
+            {% for tag in cheatsheet.tags %}
+            <span class="cheatsheet-tag">#{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
       </a>
     </li>
     {% endfor %}
