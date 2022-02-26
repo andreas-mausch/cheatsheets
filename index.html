@@ -13,6 +13,8 @@ title: Cheat sheets
       <a href="{{ cheatsheet.url }}">
         {% if cheatsheet.logo %}
           <img class="cheatsheet-logo" src="{{ cheatsheet.logo }}">
+        {% else %}
+          <span class="cheatsheet-logo"></span>
         {% endif %}
         <span class="cheatsheet-title">{{ cheatsheet.title | downcase }}</span>
 
