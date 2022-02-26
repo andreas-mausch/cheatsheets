@@ -35,29 +35,29 @@ title: Cheat sheets
 <script>
   function onSearchInput() {
     var term = document.getElementById("cheatsheet-search").value.toUpperCase();
-    var titles = document.querySelectorAll(".cheatsheet-entries li a .cheatsheet-title");
+    var titles = document.querySelectorAll(".cheatsheet-entries li a .cheatsheet-description .cheatsheet-title");
 
     titles.forEach(title => {
       var titleText = title.innerText.toUpperCase();
       if (titleText === term) {
-        window.location.href = title.parentElement.href;
+        window.location.href = title.parentElement.parentElement.href;
       }
 
       if (titleText.indexOf(term) > -1 || tagsMatch(title.parentElement, term)) {
-        title.parentElement.parentElement.style.display = "";
+        title.parentElement.parentElement.parentElement.style.display = "";
       } else {
-        title.parentElement.parentElement.style.display = "none";
+        title.parentElement.parentElement.parentElement.style.display = "none";
       }
     });
   }
 
   function handleEnter(event) {
     if (event.keyCode == 13) {
-      var titles = document.querySelectorAll(".cheatsheet-entries li a .cheatsheet-title");
-      var visibleTitles = Array.from(titles).filter(title => title.parentElement.parentElement.style.display === "");
+      var titles = document.querySelectorAll(".cheatsheet-entries li a .cheatsheet-description .cheatsheet-title");
+      var visibleTitles = Array.from(titles).filter(title => title.parentElement.parentElement.parentElement.style.display === "");
 
       if (visibleTitles.length == 1) {
-        window.location.href = visibleTitles[0].parentElement.href;
+        window.location.href = visibleTitles[0].parentElement.parentElement.href;
       }
     }
   }
