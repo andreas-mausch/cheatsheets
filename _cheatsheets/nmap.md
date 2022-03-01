@@ -6,4 +6,7 @@ section:
   - name: SSL/TLS
     commands:
       Find supported ciphers for a website: nmap --script ssl-enum-ciphers -p 443 google.com
+  - name: Local network
+    commands:
+      Scan: nmap -sn 192.168.178.0/24
 ---
