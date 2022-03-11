@@ -47,6 +47,11 @@ section:
       Revert file: <kbd>CTRL</kbd>+<kbd>J</kbd>
 ---
 
+**Github: Search issues created or commented by me**
+
+- [created](https://github.com/search?q=is%3Aissue+author%3A%40me)
+- [commented](https://github.com/search?q=is%3Aissue+commenter%3A%40me)
+
 **Replace wrong email after commits have been pushed**
 
 ```bash
