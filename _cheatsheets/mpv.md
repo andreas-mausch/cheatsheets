@@ -10,6 +10,7 @@ section:
       Fullscreen: <kbd>f</kbd>
       Screenshot: <kbd>s</kbd>
       Cycle audio streams: <kbd>#</kbd>
+      Cycle subtitles: <kbd>j</kbd>
       Next frame: <kbd>.</kbd>
       Previous frame: <kbd>,</kbd>
       Toggle hardware acceleration: <kbd>CTRL</kbd>+<kbd>H</kbd>
