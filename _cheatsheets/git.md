@@ -24,6 +24,17 @@ section:
     commands:
       Count commits per author: git shortlog --summary --numbered --email --no-merges [--all]
       Count commits per day: git log --date=short --pretty=format:%ad | sort | uniq --count
+  - name: Stash
+    commands:
+      Stash: git stash
+      Apply changes to current branch (deletes the stash): git stash pop
+      Apply and keep stash: git stash apply
+      List: git stash list
+      Show filenames (most recent stash): git stash show
+      Show changes (most recent stash): git stash show -p
+      Show changes (specific stash): git stash show -p stash@{1}
+      Show full filenames: git stash show -p stash@{0} --name-only
+      Show diff of single file in stash: git diff stash@{0}^! -- file.txt
   - name: Filter commits
     commands:
       by Date and author: git lg --after={2016-09-01} --before={2016-10-01} --author="Andreas Mausch"
