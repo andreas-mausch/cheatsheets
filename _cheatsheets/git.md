@@ -8,8 +8,9 @@ section:
       Obtain your key: gpg --list-secret-keys --keyid-format LONG
       Set your key: "git config user.signingkey <key>"
       Tell git to sign all of your commits: git config commit.gpgsign true
-  - name: Undo
+  - name: Revert/Undo
     commands:
+      Revert last 3 commits: git revert --no-commit HEAD~3..
       Undo last local commit, but keep changes: git reset HEAD~
   - name: cleanup
     commands:
