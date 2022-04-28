@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: df du lsblk
+tags: df du lsblk disk space size
 section:
   - name: df
     commands:
