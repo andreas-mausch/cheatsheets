@@ -6,7 +6,12 @@ section:
   - name: SSL/TLS
     commands:
       Find supported ciphers for a website: nmap --script ssl-enum-ciphers -p 443 google.com
-  - name: Local network
+  - name: Find local IP address
     commands:
+      Find local IP address (Mac): ipconfig getifaddr en0
+      Alternative (without the need to know the network): ifconfig -l | xargs -n1 ipconfig getifaddr
+      Find local IP including subnet (/24 for example): ip addr show en0 | grep "inet\b" | awk '{print $2}'
+  - name: nmap
       Scan (sn: Skip port scan, oG: Grepable output): nmap -sn -oG - 192.168.178.0/24
+      Scan (one-liner): nmap -v0 -sn -oG - `ip addr show en0 | grep "inet\b" | awk '{print $2}'`
 ---
