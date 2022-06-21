@@ -12,6 +12,7 @@ section:
       Alternative (without the need to know the network): ifconfig -l | xargs -n1 ipconfig getifaddr
       Find local IP including subnet (/24 for example): ip addr show en0 | grep "inet\b" | awk '{print $2}'
   - name: nmap
-      Scan (sn: Skip port scan, oG: Grepable output): nmap -sn -oG - 192.168.178.0/24
-      Scan (one-liner): nmap -v0 -sn -oG - `ip addr show en0 | grep "inet\b" | awk '{print $2}'`
+    commands:
+      "Scan (sn: Skip port scan, oG: Grepable output)": nmap -sn -oG - 192.168.178.0/24
+      Scan (automatically detect network range, one-liner): nmap -v0 -sn -oG - `ip addr show en0 | grep "inet\b" | awk '{print $2}'`
 ---
