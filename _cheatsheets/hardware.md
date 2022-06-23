@@ -7,9 +7,11 @@ section:
       "inxi (-F: full output, -x: add details, -z: mask personal info)": inxi -Fxz
       hwinfo: hwinfo --short
       BIOS: sudo dmidecode --type bios
+      Model name: sudo dmidecode --string system-version
   - name: CPU
     commands:
-      Show CPU: lscpu
+      lscpu: lscpu
+      dmidecode: sudo dmidecode --string processor-version
   - name: Memory
     commands:
       Show RAM speed: sudo dmidecode --type memory
