@@ -19,6 +19,10 @@ section:
       pull & prune: git pull --rebase --prune
       Always prune on fetch/pull globally: git config --global fetch.prune true
       Always prune on fetch/pull for current repo: git config remote.origin.prune true
+  - name: List unpushed branches
+    commands:
+      git log: git log --branches --not --remotes --no-walk --decorate --oneline
+      git branch: git branch -vv
   - name: cleanup
     commands:
       Find non-merged branches: git branch --remote --no-merged
