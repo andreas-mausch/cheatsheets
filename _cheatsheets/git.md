@@ -25,6 +25,8 @@ section:
       git branch: git branch -vv
   - name: cleanup
     commands:
+      Delete local branch: git branch --delete branch-name
+      Delete remote branch: git push --delete origin branch-name
       Find non-merged branches: git branch --remote --no-merged
       Delete merged local branches: git branch --merged origin/master | grep -v \* | xargs git branch -D
       Find largest files (even in history): "git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | sed -n 's/^blob //p' |   sort --numeric-sort --key=2 | cut -c 1-12,41- | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest"
