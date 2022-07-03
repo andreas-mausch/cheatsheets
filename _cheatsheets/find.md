@@ -19,4 +19,6 @@ section:
   - name: Last change
     commands:
       Show all files changed within the last year: find . -ctime 365 2>/dev/null
+  - name: Filter by pattern
+      Show only folders containing at least one file matching a pattern: find . -iname "dsc_*" -printf "%h\n" | sort -u
 ---
