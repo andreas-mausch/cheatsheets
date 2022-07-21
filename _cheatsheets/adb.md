@@ -11,6 +11,8 @@ logo: data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgi
 ```
 adb pull -a /sdcard/DCIM/Camera/
 adb pull -a /sdcard/DCIM/Screenshots/
+adb pull -a /sdcard/DCIM/Screen\ recordings/
+adb pull -a /sdcard/Download/
 adb pull -a /sdcard/Snapseed/
 ```
 
