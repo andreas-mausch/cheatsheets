@@ -9,6 +9,7 @@ logo: data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgi
 ## Copy files from phone
 
 ```
+adb connect S10-von-neonew:5555
 adb pull -a /sdcard/DCIM/Camera/
 adb pull -a /sdcard/DCIM/Screenshots/
 adb pull -a /sdcard/DCIM/Screen\ recordings/

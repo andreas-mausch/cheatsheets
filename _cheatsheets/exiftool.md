@@ -5,7 +5,7 @@ logo: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAC1klE
 section:
   - name: Print
     commands:
-      Print raw tag names: "exiftool -short -groupNames <FILENAME>"
+      Print raw tag names: "exiftool -short -groupNames1 -duplicates <FILENAME>"
       Print values only: "exiftool -s3 <FILENAME>"
       Print camera models: exiftool -model -s3 -recurse .
       Print jpeg structure (markers): exiv2 -pS image.jpg
@@ -15,6 +15,8 @@ section:
     commands:
       Find files without exif data: "exiftool -s3 -filepath -q -if 'not $exif:all' -r <YOUR_DIRECTORY_TO_SCAN>"
       Find all pictures edited with Snapseed: "exiftool -if '$software =~ /snapseed/i' -p '$directory/$filename' -r -q -q ."
+      Find all pictures from selfie camera (Samsung S10): "exiftool -recurse -if '$FNumber eq "1.9" and $FocalLength eq "3.3 mm"' -printFormat '$directory/$filename' -quiet -quiet ."
+      Find all pictures from selfie camera (Samsung A40): "exiftool -recurse -if '$FNumber eq "2.0" and $FocalLength eq "3.8 mm"' -printFormat '$directory/$filename' -quiet -quiet ."
   - name: Location
     commands:
       Print GPS coordinates: exiftool -if '$gpslatitude' -a "-gps*" -ee -c "%.6f degrees" image.jpg
