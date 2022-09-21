@@ -21,7 +21,7 @@ section:
       Create gif: "magick convert -delay 30 -loop 0 -resize 50% *.jpg animation.gif"
   - name: Color reduction
     commands:
-      Colors: "magick convert input.png +dither -colors 16 output.png"
+      Reduce colors: "magick convert input.png +dither -colors 16 output.png"
       Posterize: "magick convert input.png -posterize 8 output.png"
   - name: Diff image
     commands:
