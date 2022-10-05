@@ -7,7 +7,7 @@ section:
     commands:
       list volumes: docker volume ls --filter driver=local --filter name="dev_" --format "{{.Name}}"
       show disk usage / volume sizes: docker system df [--verbose]
-      prune: docker system prune [--volumes]
+      prune: docker system prune [--volumes] [--all]
       show stopped containers: docker container ls -f status=exited -a
   - name: stats
     commands:
