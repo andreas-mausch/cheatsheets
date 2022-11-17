@@ -8,6 +8,9 @@ section:
       Obtain your key: gpg --list-secret-keys --keyid-format LONG
       Set your key: "git config user.signingkey <key>"
       Tell git to sign all of your commits: git config commit.gpgsign true
+  - name: SSH Keys
+    commands:
+      Clone with a different ssh key: git clone -c core.sshCommand="ssh -i ~/.ssh/your-ssh-fileName" git@github.com:orgname/repo.git
   - name: Revert/Undo
     commands:
       Revert last 3 commits: git revert --no-commit HEAD~3..
@@ -37,6 +40,7 @@ section:
     commands:
       Count commits per author: git shortlog --summary --numbered --email --no-merges [--all]
       Count commits per day: git log --date=short --pretty=format:%ad | sort | uniq --count
+      Show all config entries with their origin: git config --list --show-origin
   - name: Stash
     commands:
       Stash: git stash
