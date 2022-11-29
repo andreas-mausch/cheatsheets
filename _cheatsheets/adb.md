@@ -8,7 +8,7 @@ logo: data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgi
 
 ## Copy files from phone
 
-```
+```bash
 adb connect S10-von-neonew:5555
 adb pull -a /sdcard/DCIM/Camera/
 adb pull -a /sdcard/DCIM/Screenshots/
@@ -19,7 +19,7 @@ adb pull -a /sdcard/Snapseed/
 
 ### Whatsapp
 
-```
+```bash
 adb pull -a /sdcard/Android/media/com.whatsapp/
 cd com.whatsapp
 rsync -rltvh0 --stats ./WhatsApp/Media/ "./2013-01-01 WhatsApp Media/Media" --ignore-existing
@@ -28,12 +28,12 @@ zip -r0 "2013-01-01 WhatsApp Media.zip" .
 
 ## Copy files to my external hard drive
 
-```
+```bash
 # Archive (keep timestamp) and don't overwrite existing
 sudo cp -an /source/ .
 ```
 
-```
+```bash
 # All files belong to root, so I cannot delete files by mistakes that easily
 sudo chown -R root:root .
 sudo chmod -R 644 *
@@ -43,7 +43,8 @@ sudo chmod -R +X *
 ## rsync
 
 Update folder:
-```
+
+```bash
 rsync -avh0 --stats ./source/ ./target/
 ```
 
@@ -62,18 +63,24 @@ Notes:
 
 ### Resize images in *Andere* folder
 
-```
+```bash
 magick mogrify -resize "3840x3840>" -quality 75 -define preserve-timestamp=true ./Andere/*.JPG
 ```
 
 ### Resize all images >1.5mb
 
-```
+```bash
 find *.jpg -type f -size +1500k -exec magick mogrify [...] {} \;
 ```
 
 ### Combined
 
-```
+```bash
 find ./Andere/ \( -iname "*.jpg" -o -iname "*.jpeg" \) -type f -size +1500k -exec magick mogrify -resize "3840x3840>" -quality 75 -define preserve-timestamp=true {} \;
+```
+
+# List all apps with their version number
+
+```bash
+adb shell dumpsys package packages | grep -E 'Package \[|versionName' | grep -A 1 -i appname
 ```
