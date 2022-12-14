@@ -34,6 +34,7 @@ section:
     commands:
       Convert .svg to .ico: magick -density 256x256 -background transparent favicon.svg -define icon:auto-resize -colors 256 favicon.ico
       Specify sizes: -define icon:auto-resize=16,24,32,64
+      Convert .svg to .png: magick -density 128x128 -background transparent favicon.svg -resize 192x192 favicon.png
       Check generated .ico file: icotool --list favicon.ico
 ---
 
