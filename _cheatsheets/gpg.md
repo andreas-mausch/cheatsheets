@@ -20,9 +20,10 @@ section:
   - name: Encrypt and decrypt
     commands:
       Encrypt file: gpg --encrypt --recipient username@email.com --output test.txt.gpg test.txt
-      Sign and encrypt file: gpg --encrypt --sign --recipient username@email.com --output test.txt.gpg test.txt
+      Sign and encrypt file: gpg --encrypt --sign [...]
+      Specify algorithm: gpg --encrypt --cipher-algo AES256 [...]
       Decrypt file (and automatically check signature, if available): gpg --output test.decrypted.txt --decrypt test.txt.gpg
-      Show packets and who is the recipient (the keyid hints who can decrypt the file): gpg --batch --list-packets test.txt.gpg
+      Inspect .gpg file: gpg --list-packets -vv --show-session-key test.txt.gpg
   - name: Export
     commands:
       Export public key: gpg --output public.asc --armor --export username@email.com
@@ -59,6 +60,15 @@ default-key <key-id>
 ```
 
 Where `key-id` is either the long keyid or the fingerprint of your key.
+
+## list-packets
+
+`list-packets` shows detailed information about a .gpg file.
+
+This information includes:
+
+- who the recipient is (the keyid hints who can decrypt the file)
+- which algorithm has been used for the symmetric part
 
 ## Nitrokey
 
