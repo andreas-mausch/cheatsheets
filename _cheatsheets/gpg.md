@@ -22,6 +22,7 @@ section:
       Encrypt file: gpg --encrypt --recipient username@email.com --output test.txt.gpg test.txt
       Sign and encrypt file: gpg --encrypt --sign --recipient username@email.com --output test.txt.gpg test.txt
       Decrypt file (and automatically check signature, if available): gpg --output test.decrypted.txt --decrypt test.txt.gpg
+      Show packets and who is the recipient (the keyid hints who can decrypt the file): gpg --batch --list-packets test.txt.gpg
   - name: Export
     commands:
       Export public key: gpg --output public.asc --armor --export username@email.com
