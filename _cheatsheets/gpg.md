@@ -22,6 +22,7 @@ section:
       Encrypt file: gpg --encrypt --recipient username@email.com --output test.txt.gpg test.txt
       Sign and encrypt file: gpg --encrypt --sign [...]
       Specify algorithm: gpg --encrypt --cipher-algo AES256 [...]
+      Disable compression: gpg --encrypt --compress-algo none [...]
       Decrypt file (and automatically check signature, if available): gpg --output test.decrypted.txt --decrypt test.txt.gpg
       Inspect .gpg file: gpg --list-packets -vv --show-session-key test.txt.gpg
   - name: Export
