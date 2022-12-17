@@ -26,6 +26,9 @@ section:
     commands:
       Export public key: gpg --output public.asc --armor --export username@email.com
       Export private key: gpg --output private.asc --armor --export-secret-key username@email.com
+  - name: CLI Language
+    commands:
+      Set language to english: LANG=en gpg --version
 ---
 
 ## sign vs. clear-sign vs. detach-sign
