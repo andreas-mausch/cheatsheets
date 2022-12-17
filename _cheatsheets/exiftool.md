@@ -15,8 +15,8 @@ section:
     commands:
       Find files without exif data: "exiftool -s3 -filepath -q -if 'not $exif:all' -r <YOUR_DIRECTORY_TO_SCAN>"
       Find all pictures edited with Snapseed: "exiftool -if '$software =~ /snapseed/i' -p '$directory/$filename' -r -q -q ."
-      Find all pictures from selfie camera (Samsung S10): "exiftool -recurse -if '$FNumber eq "1.9" and $FocalLength eq "3.3 mm"' -printFormat '$directory/$filename' -quiet -quiet ."
-      Find all pictures from selfie camera (Samsung A40): "exiftool -recurse -if '$FNumber eq "2.0" and $FocalLength eq "3.8 mm"' -printFormat '$directory/$filename' -quiet -quiet ."
+      Find all pictures from selfie camera (Samsung S10): "exiftool -recurse -if '$FNumber eq \"1.9\" and $FocalLength eq \"3.3 mm\"' -printFormat '$directory/$filename' -quiet -quiet ."
+      Find all pictures from selfie camera (Samsung A40): "exiftool -recurse -if '$FNumber eq \"2.0\" and $FocalLength eq \"3.8 mm\"' -printFormat '$directory/$filename' -quiet -quiet ."
   - name: Location
     commands:
       Print GPS coordinates: exiftool -if '$gpslatitude' -a "-gps*" -ee -c "%.6f degrees" image.jpg
