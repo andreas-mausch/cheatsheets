@@ -9,8 +9,8 @@ section:
       Set encryption flag on key: gpg --edit-key me@email.com change-usage
   - name: List
     commands:
-      List public keys: gpg --list-public-keys
-      List private keys: gpg --list-secret-keys
+      List public keys: gpg --list-public-keys --keyid-format long
+      List private keys: gpg --list-secret-keys --keyid-format long
   - name: Sign and verify
     commands:
       clear-sign (original file content plus signature): gpg --clear-sign --local-user me@email.com --output test.txt.asc test.txt
@@ -51,6 +51,14 @@ section:
 In general, I also like to specify the  `--local-user` flag explicitly to the signing commands.
 If you do not specify it, the default private key is used.
 The default key is the [first key found in the secret keyring](https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html).
+
+To set a default signing key, edit the file `~/.gnupg/gpg.conf` and add the line:
+
+```
+default-key <key-id>
+```
+
+Where `key-id` is either the long keyid or the fingerprint of your key.
 
 ## Nitrokey
 

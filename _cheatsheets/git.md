@@ -5,8 +5,8 @@ logo: data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi
 section:
   - name: Sign commits
     commands:
-      Obtain your key: gpg --list-secret-keys --keyid-format LONG
-      Set your key: "git config user.signingkey <key>"
+      Obtain your key: gpg --list-secret-keys --keyid-format long
+      Set your key: "git config user.signingkey <long-key-id>"
       Tell git to sign all of your commits: git config commit.gpgsign true
   - name: SSH Keys
     commands:
