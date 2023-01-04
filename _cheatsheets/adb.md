@@ -14,7 +14,10 @@ adb pull -a /sdcard/DCIM/Camera/
 adb pull -a /sdcard/DCIM/Screenshots/
 adb pull -a /sdcard/DCIM/Screen\ recordings/
 adb pull -a /sdcard/Download/
+adb pull -a /sdcard/Pictures/Instagram/
 adb pull -a /sdcard/Snapseed/
+adb pull -a /sdcard/Android/media/com.whatsapp/WhatsApp/Media/
+adb pull -a /sdcard/Android/media/com.whatsapp/WhatsApp/Databases/
 ```
 
 ### Whatsapp
