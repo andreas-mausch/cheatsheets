@@ -59,6 +59,7 @@ section:
   - name: Feature branches
     commands:
       Count commits on feature branch: git rev-list [--no-merges] --count origin/master..HEAD
+      List commits on branch (use git log if alias is not set): git lg --left-right --graph --cherry-pick origin/master..HEAD
       Table of all branches and their commit count compared to origin/master: git for-each-ref refs/heads refs/remotes/origin --format='%(refname:short)' | xargs -i sh -c 'ahead=$(git rev-list --count origin/master..{}); behind=$(git rev-list --count {}..origin/master); printf "%4s %4s {}\n" "+$ahead" "-$behind"'
       Merge branch without checkout (merge local dev into local master): git fetch . dev:master
   - name: Create patch
