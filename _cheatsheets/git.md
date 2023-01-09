@@ -68,6 +68,9 @@ section:
       Unstaged changes: git diff
       Staged changes: git diff --cached
       Both (unstaged and staged) changes: git diff HEAD
+  - name: Changes between branches
+    commands:
+      Summary (filenames and amount of changes): git diff --compact-summary branch..master
   - name: Encoding
     commands:
       Show umlauts in filenames: git config --global core.quotepath false
