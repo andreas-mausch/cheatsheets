@@ -71,6 +71,9 @@ section:
   - name: Changes between branches
     commands:
       Summary (filenames and amount of changes): git diff --compact-summary branch..master
+    shortcuts:
+      Jump to next file: <kbd>n</kbd>
+      Jump to previous file: <kbd>N</kbd>
   - name: Encoding
     commands:
       Show umlauts in filenames: git config --global core.quotepath false
