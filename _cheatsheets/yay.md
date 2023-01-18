@@ -17,6 +17,7 @@ section:
       search package: yay -Ss <package>
       package details: yay -Si <package>
       list files: yay -Fl <package>
+      search command: yay -F glxinfo # will output extra/mesa-utils
   - name: Installed packages
     commands:
       search package: yay -Qs <package>
