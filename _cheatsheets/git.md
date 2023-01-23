@@ -43,7 +43,7 @@ section:
       Show all config entries with their origin: git config --list --show-origin
   - name: Stash
     commands:
-      Stash: git stash
+      Stash with name: git stash push -m my-stash
       Apply changes to current branch (deletes the stash): git stash pop
       Apply and keep stash: git stash apply
       List: git stash list
