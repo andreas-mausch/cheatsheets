@@ -59,6 +59,7 @@ section:
       since/until: git lg --since="2 year ago" [--until="3 weeks ago"]
   - name: Feature branches
     commands:
+      Find default branch: git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
       Count commits on feature branch: git rev-list [--no-merges] --count origin/master..HEAD
       List commits on branch (use git log if alias is not set): git lg --left-right --graph --cherry-pick [--no-merges] origin/master..HEAD
       Table of all branches and their commit count compared to origin/master: git for-each-ref refs/heads refs/remotes/origin --format='%(refname:short)' | xargs -i sh -c 'ahead=$(git rev-list --count origin/master..{}); behind=$(git rev-list --count {}..origin/master); printf "%4s %4s {}\n" "+$ahead" "-$behind"'
