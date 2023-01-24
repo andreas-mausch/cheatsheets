@@ -46,6 +46,7 @@ section:
       Stash with name: git stash push -m my-stash
       Apply changes to current branch (deletes the stash): git stash pop
       Apply and keep stash: git stash apply
+      Apply by name: git stash apply stash^{/my-stash}
       List: git stash list
       Show filenames (most recent stash): git stash show
       Show changes (most recent stash): git stash show -p
