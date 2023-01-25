@@ -8,6 +8,12 @@ section:
       hwinfo: hwinfo --short
       BIOS: sudo dmidecode --type bios
       Model name: sudo dmidecode --string system-version
+  - name: Update firmware
+    commands:
+      Display all detected devices: fwupdmgr get-devices
+      Download latest metadata from LVFS: fwupdmgr refresh
+      Display available updates: fwupdmgr get-updates
+      Download and apply updates: fwupdmgr update
   - name: CPU
     commands:
       lscpu: lscpu
