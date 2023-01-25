@@ -9,4 +9,22 @@ section:
       Update hardware clock to currently set time: sudo hwclock --systohc
       Show hardware clock: sudo hwclock --show
       Show time information: timedatectl status
+  - name: Services
+    commands:
+      ntpd: systemctl status ntpd.service
+      timesyncd: systemctl status systemd-timesyncd.service
 ---
+
+Use only `systemd-timesyncd`, as suggested [here](https://hkern0.com/manjaro-linux-enable-time-server-syncronization)
+
+> systemd-timesyncd is basically a small client-only NTP implementation more or less bundled with newer systemd releases. It's more lightweight than a full ntpd but only supports time sync - i.e. it can't act as an NTP server for other machines. It's intended to replace ntpd for clients.
+
+[source](https://unix.stackexchange.com/questions/305643/ntpd-vs-systemd-timesyncd-how-to-achieve-reliable-ntp-syncing)
+
+```bash
+systemctl disable ntpd.service
+systemctl stop ntpd.service
+
+systemctl start systemd-timesyncd.service
+systemctl enable systemd-timesyncd.service
+```
