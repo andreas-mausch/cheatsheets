@@ -8,4 +8,5 @@ section:
       Get time from server: sudo ntpdate time.nist.gov
       Update hardware clock to currently set time: sudo hwclock --systohc
       Show hardware clock: sudo hwclock --show
+      Show time information: timedatectl status
 ---
