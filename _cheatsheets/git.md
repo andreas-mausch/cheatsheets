@@ -79,6 +79,11 @@ section:
   - name: Encoding
     commands:
       Show umlauts in filenames: git config --global core.quotepath false
+  - name: Debugging HTTP (for example HTTP 403 Forbidden) and SSH connections
+    commands:
+      HTTP: GIT_TRACE_CURL=true git pull
+      HTTP (deprecated): GIT_CURL_VERBOSE=1 GIT_TRACE=1 git pull
+      SSH: GIT_SSH_COMMAND="ssh -vvv" git pull
   - name: git gui
     shortcuts:
       Stage file: <kbd>CTRL</kbd>+<kbd>T</kbd>
