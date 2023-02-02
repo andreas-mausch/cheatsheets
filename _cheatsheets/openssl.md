@@ -7,9 +7,11 @@ section:
     commands:
       Show certificate information from file: openssl x509 -text -noout -in certificate.crt
       Show certificate information from website: openssl s_client -showcerts -connect google.com:443 </dev/null 2>/dev/null
+      Print subject only: openssl x509 -subject -noout -in certificate.crt
+      Print enddate only: openssl x509 -enddate -noout -in certificate.crt
       .p12 info: openssl pkcs12 [-nokeys] -info -in certificate.p12
       .p12 enddate: openssl pkcs12 -in certificate.p12 -nodes | openssl x509 -noout -enddate
   - name: Raw HTTP Request
     commands:
-      Send: cat request.http | ncat --ssl example.com 443
+      Send http request to https server: cat request.http | ncat --ssl example.com 443
 ---
