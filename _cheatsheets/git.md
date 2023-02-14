@@ -57,6 +57,7 @@ section:
     commands:
       by Date and author: git lg --after={2016-09-01} --before={2016-10-01} --author="Andreas Mausch"
       since/until: git lg --since="2 year ago" [--until="3 weeks ago"]
+      Diff from yesterday: git diff @{yesterday}..HEAD
   - name: Feature branches
     commands:
       Count commits on feature branch: git rev-list [--no-merges] --count origin/master..HEAD
