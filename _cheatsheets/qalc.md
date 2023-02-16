@@ -18,4 +18,7 @@ section:
   - name: Equation Solver
     commands:
       Equation Solver: qalc "x^2 + 2x + 7 = 17"
+  - name: Settings
+    commands:
+      Enable thousands separator (2 = locale): qalc --set "group 2"
 ---
