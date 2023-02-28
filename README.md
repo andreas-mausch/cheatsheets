@@ -7,6 +7,12 @@ bundle install
 bundle exec jekyll serve --host=0.0.0.0
 ```
 
+via docker:
+
+```bash
+docker run -it --rm --volume="$PWD:/srv/jekyll" -p 4000:4000 jekyll/jekyll:3.8 jekyll serve
+```
+
 ## Add logo
 
 Add this section to the markdown:
