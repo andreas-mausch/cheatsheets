@@ -19,7 +19,7 @@ section:
     commands:
       Only prune remote branches: git remote prune origin
       Update remote branches: git remote update origin --prune
-      pull & prune: git pull --rebase --prune
+      pull & prune: git pull --rebase --prune --autostash
       Always prune on fetch/pull globally: git config --global fetch.prune true
       Always prune on fetch/pull for current repo: git config remote.origin.prune true
   - name: List unpushed branches
