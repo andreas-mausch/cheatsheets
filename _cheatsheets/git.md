@@ -134,4 +134,4 @@ git push -u origin --all
 
 **My git aliases**
 
-See [here](https://github.com/andreas-mausch/manjaro-post-installation-scripts/blob/0ddae436848cdca1259917e81ab566a068daaed4/git/script.sh#L7-L14)
+See [here](https://github.com/andreas-mausch/manjaro-post-installation-scripts/blob/801bf8b389f1fe1246117cf9978fe537da05e342/git/script.sh#L7-L15)
