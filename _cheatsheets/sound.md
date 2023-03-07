@@ -26,4 +26,6 @@ section:
       Unpair: bluetoothctl cancel-pairing <MAC>
       Remove: bluetoothctl remove <MAC>
       Switch audio output to bluetooth device: "pacmd set-default-sink 1 [or the name: bluez_sink.AA_BB_CC_DD_EE_FF.a2dp_sink]"
+      Disable bluetooth: rfkill block bluetooth
+      Enable bluetooth again: rfkill unblock bluetooth
 ---
