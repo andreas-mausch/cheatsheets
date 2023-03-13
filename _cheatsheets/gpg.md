@@ -23,7 +23,7 @@ section:
       Sign and encrypt file: gpg --encrypt --sign [...]
       Specify algorithm: gpg --encrypt --cipher-algo AES256 [...]
       Disable compression: gpg --encrypt --compress-algo none [...]
-      Decrypt file (and automatically check signature, if available): gpg --output test.decrypted.txt --decrypt test.txt.gpg
+      Decrypt file (and automatically check signature, if available): gpg --decrypt test.txt.gpg --output test.decrypted.txt
       Inspect .gpg file: gpg --list-packets -vv --show-session-key test.txt.gpg
   - name: Export
     commands:
