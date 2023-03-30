@@ -10,7 +10,7 @@ section:
   - name: List
     commands:
       List public keys: gpg --list-public-keys --keyid-format long
-      List private keys: gpg --list-secret-keys --keyid-format long --with-keygrip
+      List private keys: gpg --list-secret-keys --keyid-format long --with-keygrip --with-subkey-fingerprints
   - name: Sign and verify
     commands:
       clear-sign (original file content plus signature): gpg --clear-sign --local-user me@email.com --output test.txt.asc test.txt
