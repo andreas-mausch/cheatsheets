@@ -8,6 +8,7 @@ section:
       Obtain your key: gpg --list-secret-keys --keyid-format long
       Set your key: "git config user.signingkey <long-key-id>"
       Tell git to sign all of your commits: git config commit.gpgsign true
+      Also sign tags: git config tag.gpgsign true
   - name: SSH Keys
     commands:
       Clone with a different ssh key: git clone -c core.sshCommand="ssh -i ~/.ssh/your-ssh-fileName" git@github.com:orgname/repo.git
