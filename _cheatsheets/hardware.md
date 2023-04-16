@@ -23,8 +23,9 @@ section:
       Show RAM speed: sudo dmidecode --type memory
   - name: Network
     commands:
-      Find wireless card (WiFi / WLAN): lspci | grep -i wireless
+      Find wireless card (WiFi / WLAN): lspci | grep -i "wireless\|wifi"
       Show details (replace the number returned by previous command): lspci -vv -s 53:00.0
+      via lshw: lshw -C network
       Show IP and MAC address: ip addr show
   - name: Show USB devices
     commands:
