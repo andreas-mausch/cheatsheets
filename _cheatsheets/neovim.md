@@ -12,6 +12,6 @@ section:
       Delete until end of line: <kbd>D</kbd>
       Delete until line 14: <kbd>d</kbd> <kbd>1</kbd> <kbd>4</kbd> <kbd>G</kbd>
   - name: Types
-    commands:
-      Show type for variable/function under cursor: K
+    shortcuts:
+      Show type for variable/function under cursor: <kbd>K</kbd>
 ---
