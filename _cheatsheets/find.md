@@ -22,4 +22,7 @@ section:
   - name: Filter by pattern
     commands:
       Show only folders containing at least one file matching a pattern: find . -iname "dsc_*" -printf "%h\n" | sort -u
+  - name: Find string in files
+    commands:
+      grep: grep -iRs --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=.git --exclude=package-lock.json "string" .
 ---
