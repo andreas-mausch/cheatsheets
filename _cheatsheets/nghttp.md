@@ -4,5 +4,5 @@ tags: http2
 section:
   - name: List resources
     commands:
-      n=discard data, a=download assets, s=print stats: "nghttp -nas https://andreas-mausch.de"
+      s=print stats, a=download assets, n=discard data: "nghttp --stat --get-assets --null-out https://andreas-mausch.de"
 ---
