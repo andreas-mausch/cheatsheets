@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: http2
+tags: http2 http3
 section:
   - name: List resources
     commands:
