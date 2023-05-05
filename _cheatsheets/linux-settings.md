@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: gsettings gthumb mousepad xfconf-query
+tags: gsettings gthumb dconf mousepad xfconf-query
 section:
   - name: Query settings
     commands:
