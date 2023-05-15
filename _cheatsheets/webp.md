@@ -6,4 +6,5 @@ section:
   - name: Animated webp
     commands:
       Create: "img2webp -d 300 -lossy -m 6 -min_size -o animated.webp *.jpg"
+      Create from mp4: ffmpeg -i input.mp4 -vcodec libwebp -filter:v "scale=720:-4,setpts=PTS/15,fps=fps=6" -lossless 0 -compression_level 5 -q:v 50 -preset default -an output.webp
 ---
