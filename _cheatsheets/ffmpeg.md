@@ -19,7 +19,7 @@ section:
   - name: Resize/scale video
     commands:
       Resize to 1280 pixels width: ffmpeg -i input.mp4 -vf scale=1280:-4 output.mp4
-      Batch resize whole folder: find . -type f -iname '*.mp4' -printf '%P\n' | xargs sh -c 'ffmpeg -i "${1}" -vf scale=1280:-4 "${1%.*}_.mp4"'
+      Batch resize whole folder: find . -type f -iname '*.mp4' -printf '%P\n' | xargs --max-args=1 sh -c 'ffmpeg -i "${0}" -vf scale=1280:-4 "${0%.*}_.mp4"'
   - name: Increase volume
     commands:
       Detect max_volume: ffmpeg -i input.mp4 -af "volumedetect" -vn -sn -dn -f null /dev/null
