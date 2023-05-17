@@ -5,5 +5,5 @@ logo: data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTU5IiBoZWlnaHQ9IjExMCIgeG1sbnM9
 section:
   - name: Download
     commands:
-      mp4, 720p max, 30fps: yt-dlp --format-sort ext:mp4,res:720,fps:30 "https://www.youtube.com/watch?v=https://www.youtube.com/watch?v=jNQXAC9IVRw"
+      mp4, 720p max, 30fps: yt-dlp --format-sort ext:mp4,res:720,fps:30 "https://www.youtube.com/watch?v=jNQXAC9IVRw"
 ---
