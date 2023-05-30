@@ -35,7 +35,7 @@ section:
       Set language to english: LANG=en gpg --version
   - name: Password generation
     commands:
-      Without special characters: cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 12 | sed -r 's/(.{4})/\1-/g'
+      Without special characters: cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 12 | sed -r 's/(.{4})/\1-/g' | sed -r 's/(.*)-/\1\n/g'
 ---
 
 ## sign vs. clear-sign vs. detach-sign
