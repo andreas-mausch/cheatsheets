@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: pacmd pactl audio pulseaudio hdmi alsa bluetooth bluetoothctl
+tags: pacmd pactl wpctl audio pulseaudio pipewire wireplumber hdmi alsa bluetooth bluetoothctl
 section:
   - name: List
     commands:
@@ -8,6 +8,7 @@ section:
        List sinks: pacmd list-sinks
        List sources: pacmd list-sources
        Via pactl: pactl list
+       Via wpctl: wpctl status
   - name: Set audio sink
     commands:
        Output to HDMI: pactl set-card-profile 0 output:hdmi-stereo+input:analog-stereo
