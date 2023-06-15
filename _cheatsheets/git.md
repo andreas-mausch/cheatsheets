@@ -72,8 +72,10 @@ section:
     commands:
       Specific commit: git format-patch -1 <hash>
       Unstaged changes: git diff
-      Staged changes: git diff --cached
+      Staged changes: git diff --staged
       Both (unstaged and staged) changes: git diff HEAD
+      Multiple commits into single file: git format-patch origin/master..HEAD --stdout > commits.patch
+      Apply multiple commits file: git am commits.patch
   - name: Changes between branches
     commands:
       Summary (filenames and amount of changes): git diff --compact-summary branch..master
