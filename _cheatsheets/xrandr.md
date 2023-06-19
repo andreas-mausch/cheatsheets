@@ -11,4 +11,7 @@ section:
     commands:
       Enable on startup: sudo systemctl enable --now autorandr.service
       Save profile: autorandr --save <name>
+  - name: Increase brightness / gamma for outdoor
+    commands:
+      Increase brightness: xrandr --output eDP-1 --brightness 1.4
 ---
