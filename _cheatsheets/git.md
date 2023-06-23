@@ -62,6 +62,7 @@ section:
   - name: Feature branches
     commands:
       Create new feature branch: git checkout -b my-feature main
+      Create new empty branch: git checkout --orphan empty-branch
       Count commits on feature branch: git rev-list [--no-merges] --count origin/master..HEAD
       List commits on branch (use git log if alias is not set): git lg --left-right --graph --cherry-pick [--no-merges] origin/master..HEAD
       List commits on branch (via cherry): git cherry master FEAT-branch
