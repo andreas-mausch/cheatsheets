@@ -36,6 +36,9 @@ section:
   - name: Password generation
     commands:
       Without special characters: cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 12 | sed -r 's/(.{4})/\1-/g' | sed -r 's/(.*)-$/\1\n/g'
+  - name: Use GPG key for SSH connections
+    commands:
+      Print SSH Public key: gpg --export-ssh-key 1111111190ABCDEF1234567890ABCDEF11111111
 ---
 
 ## sign vs. clear-sign vs. detach-sign
