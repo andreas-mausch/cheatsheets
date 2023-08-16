@@ -36,7 +36,7 @@ section:
       Find largest files (even in history): "git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | sed -n 's/^blob //p' |   sort --numeric-sort --key=2 | cut -c 1-12,41- | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest"
   - name: bundle
     commands:
-      Complete repo: git bundle create (basename $PWD).git.bundle --all
+      Complete repo: git bundle create (basename (git rev-parse --show-toplevel)).git.bundle --all
   - name: List
     commands:
       Count commits per author: git shortlog --summary --numbered --email --no-merges [--all]
