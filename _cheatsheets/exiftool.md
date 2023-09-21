@@ -21,6 +21,7 @@ section:
     commands:
       Print GPS coordinates: exiftool -if '$gpslatitude' -a "-gps*" -ee -c "%.6f degrees" image.jpg
       Create .gpx track from images (via gpx.fmt): "exiftool -if '$datetimeoriginal' -fileOrder datetimeoriginal -d \"%Y-%m-%dT%H:%M:%S+02:00\" -p ./gpx.fmt ./*.jpg > output.gpx"
+      Find files with GPS tags and display them in GPXSee: exiftool --recursive -q -q -if '$GPSLatitude' -p '$directory/$filename' . | xargs gpxsee
   - name: Thumbnail
     commands:
       List thumbnails: exiftool -a -preview:all image.jpg
