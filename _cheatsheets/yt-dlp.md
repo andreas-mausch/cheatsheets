@@ -6,4 +6,5 @@ section:
   - name: Download
     commands:
       mp4, 720p max, 30fps: yt-dlp --format-sort ext:mp4,res:720,fps:30 "https://www.youtube.com/watch?v=jNQXAC9IVRw"
+      mp3: yt-dlp -f "bestaudio[ext=m4a]" --extract-audio --audio-format mp3 "https://www.youtube.com/watch?v=fHOYnHiAcic"
 ---
