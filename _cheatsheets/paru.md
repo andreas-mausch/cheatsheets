@@ -6,6 +6,7 @@ section:
   - name: Install
     commands:
       install: paru -S <package>
+      Edit PKGBUILD and skip checksum check: paru -S gnucash-xbt --fm helix --mflags "--skipchecksums"
       "uninstall (-n: no backup files; -s: remove dependencies)": paru -Rns <package>
       system update: paru -Syu
   - name: Mirrors
