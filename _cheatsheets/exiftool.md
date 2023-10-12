@@ -17,6 +17,9 @@ section:
       Find all pictures edited with Snapseed: "exiftool -if '$software =~ /snapseed/i' -p '$directory/$filename' -r -q -q ."
       Find all pictures from selfie camera (Samsung S10): "exiftool -recurse -if '$FNumber eq \"1.9\" and $FocalLength eq \"3.3 mm\"' -printFormat '$directory/$filename' -quiet -quiet ."
       Find all pictures from selfie camera (Samsung A40): "exiftool -recurse -if '$FNumber eq \"2.0\" and $FocalLength eq \"3.8 mm\"' -printFormat '$directory/$filename' -quiet -quiet ."
+  - name: Date and time
+    commands:
+      Change timezone (change to Havanna): exiftool "-SubSecDateTimeOriginal<\${DateTimeUTC;ShiftTime('-4:0:0')}" P9062673.JPG
   - name: Location
     commands:
       Print GPS coordinates: exiftool -if '$gpslatitude' -a "-gps*" -ee -c "%.6f degrees" image.jpg
@@ -31,6 +34,11 @@ section:
       Show raw xmp xml data (exiftool): exiftool -xmp -binary image.jpg
       Show raw xmp xml data (exiv2): exiv2 -pX image.jpg
 ---
+
+For Date/Time changes, see also
+[https://superuser.com/questions/1757307/how-to-set-an-images-date-and-time-with-timezone-with-exiftool](https://superuser.com/questions/1757307/how-to-set-an-images-date-and-time-with-timezone-with-exiftool) here.
+
+Options:
 
 - -a: Allow duplicate tags to be extracted
 - -b: Output requested metadata in binary format
