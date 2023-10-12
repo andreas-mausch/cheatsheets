@@ -11,7 +11,7 @@ section:
       Screenshot: <kbd>s</kbd>
       Cycle audio streams: <kbd>#</kbd>
       Cycle subtitles: <kbd>j</kbd>
-      Next frame: <kbd>.</kbd>
-      Previous frame: <kbd>,</kbd>
+      Next frame: <kbd>,</kbd>, <kbd>.</kbd>
+      Double the speed: <kbd>{</kbd>, <kbd>}</kbd>
       Toggle hardware acceleration: <kbd>CTRL</kbd>+<kbd>H</kbd>
 ---
