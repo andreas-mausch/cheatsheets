@@ -13,6 +13,7 @@ section:
     commands:
       For WhatsApp: ffmpeg -i input.mp4 -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p -preset slow -crf 22 output.mp4
       AV1: ffmpeg -i input.mp4 -c:v libaom-av1 -c:a libopus -b:a 96k output.webm
+      Keep metadata: ffmpeg -i input.mp4 -movflags use_metadata_tags -map_metadata 0
   - name: Cut video
     commands:
       Start timestamp and duration: ffmpeg -ss 00:00:30.0 -i input.mp4 -c copy -t 00:00:44.0 output.mp4
