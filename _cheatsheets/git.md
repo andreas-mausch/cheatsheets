@@ -59,6 +59,7 @@ section:
       by Date and author: git lg --after={2016-09-01} --before={2016-10-01} --author="Andreas Mausch"
       since/until: git lg --since="2 year ago" [--until="3 weeks ago"]
       Diff from yesterday: git diff @{yesterday}..HEAD
+      Another variant: git whatchanged --since="1 day ago" -p
   - name: Feature branches
     commands:
       Create new feature branch: git checkout -b my-feature main
