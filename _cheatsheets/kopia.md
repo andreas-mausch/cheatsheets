@@ -11,6 +11,7 @@ section:
   - name: Validate
     commands:
       Full validation: kopia snapshot verify --verify-files-percent=100 --file-parallelism=10 --parallel=10
+      Disable automatic maintenance: kopia maintenance set --enable-quick=false --enable-full=false
 ---
 
 Unfortunately, the [error correction](https://kopia.io/docs/advanced/ecc/) is still not stable for over a year now.
