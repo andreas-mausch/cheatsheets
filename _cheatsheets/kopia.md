@@ -20,6 +20,7 @@ section:
   - name: Policy
     commands:
       List policies: kopia policy list
+      Ignore file patterns: kopia policy set --add-ignore .npm/ --add-ignore node_modules/ --global
 ---
 
 Unfortunately, the [error correction](https://kopia.io/docs/advanced/ecc/) is still not stable for over a year now.
