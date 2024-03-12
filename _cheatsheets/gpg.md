@@ -21,7 +21,7 @@ section:
   - name: Encrypt and decrypt
     commands:
       Encrypt file: gpg --encrypt --recipient username@email.com --output test.txt.gpg test.txt
-      Sign and encrypt file: gpg --encrypt --sign [...]
+      Sign and encrypt file: gpg --sign --encrypt [...]
       Specify algorithm: gpg --encrypt --cipher-algo AES256 [...]
       Disable compression: gpg --encrypt --compress-algo none [...]
       List recipients of encrypted file (via Sequoia): sq inspect test.txt.gpg
