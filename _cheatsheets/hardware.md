@@ -26,6 +26,7 @@ section:
       Find wireless card (WiFi / WLAN): lspci | grep -i "wireless\|wifi"
       Show details (replace the number returned by previous command): lspci -vv -s 53:00.0
       via lshw: lshw -C network
+      Find physical network devices: ls -l /sys/class/net/ | grep -v virtual
       Show IP and MAC address: ip addr show
   - name: Show USB devices
     commands:
