@@ -35,10 +35,7 @@ section:
       Show raw xmp xml data (exiv2): exiv2 -pX image.jpg
 ---
 
-For Date/Time changes, see also
-[https://superuser.com/questions/1757307/how-to-set-an-images-date-and-time-with-timezone-with-exiftool](https://superuser.com/questions/1757307/how-to-set-an-images-date-and-time-with-timezone-with-exiftool) here.
-
-Options:
+## Options
 
 - -a: Allow duplicate tags to be extracted
 - -b: Output requested metadata in binary format
@@ -48,7 +45,14 @@ Options:
 - -s3: Print values only (no tag names)
 - -W: With -W, a new output file is created for each extracted tag
 
-*gpx.fmt*
+## Date and Time
+
+For Date/Time changes, see also
+[https://superuser.com/questions/1757307/how-to-set-an-images-date-and-time-with-timezone-with-exiftool](https://superuser.com/questions/1757307/how-to-set-an-images-date-and-time-with-timezone-with-exiftool) here.
+
+Note on **SubSecDateTimeOriginal**: It is a composite tag of *EXIF:DateTimeOriginal*, *SubSecTimeOriginal* and *OffsetTimeOriginal*.
+
+## gpx.fmt
 
 ```
 #------------------------------------------------------------------------------
