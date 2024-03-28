@@ -22,7 +22,7 @@ section:
       Change timezone (change to Havanna): exiftool "-SubSecDateTimeOriginal<\${DateTimeUTC;ShiftTime('-4:0:0')}" image.jpg
       Set exif timestamp to mdate: exiftool "-DateTimeOriginal<FileModifyDate" "-FileModifyDate<FileModifyDate" image.jpg
       Set mdate to exif timestamp: exiftool "-FileModifyDate<DateTimeOriginal" image.jpg
-      Relative time change (+1 year, 12 month, 28 days, 14 hours, 54 minutes, 32 seconds): exiftool "-SubSecDateTimeOriginal+=1:12:28 14:54:32" -verbose image.jpg
+      Relative time change (+1 year, 12 month, 28 days, 14 hours, 54 minutes, 32 seconds): exiftool -DateTimeUTC-="1:12:28 14:54:32" -AllDates-="1:12:28 14:54:32" -verbose image.jpg
   - name: Location
     commands:
       Print GPS coordinates: exiftool -if '$gpslatitude' -a "-gps*" -ee -c "%.6f degrees" image.jpg
@@ -56,6 +56,8 @@ For Date/Time changes, see also
 Note on **SubSecDateTimeOriginal**: It is a composite tag of *EXIF:DateTimeOriginal*, *SubSecTimeOriginal* and *OffsetTimeOriginal*.
 
 There is also **AllDates**, see [here](https://exiftool.org/TagNames/Shortcuts.html).
+
+**DateTimeUTC** seems to be used only on my Olympus camera.
 
 ## gpx.fmt
 
