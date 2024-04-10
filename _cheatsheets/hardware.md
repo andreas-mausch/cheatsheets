@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: dmidecode hwinfo ip mac lscpu lspci lsusb inxi
+tags: dmidecode hwinfo ip mac lscpu lspci lsusb inxi nmcli
 section:
   - name: General hardware information
     commands:
@@ -28,6 +28,7 @@ section:
       via lshw: lshw -C network
       Find physical network devices: ls -l /sys/class/net/ | grep -v virtual
       Show IP and MAC address: ip addr show
+      Find WiFis: nmcli dev wifi
   - name: Show USB devices
     commands:
       List devices: lsusb [-v]
