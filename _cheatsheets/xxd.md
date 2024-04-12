@@ -7,6 +7,6 @@ section:
     commands:
       File to Hex: xxd file.bin
       String to Hex: echo example | xxd
-      String to Hexdump (without ascii view): echo example | xxd -p
+      String to Hexdump (without ascii view): echo example | xxd -p -u
       Hexdump to Binary: echo 746573740a | xxd -p -r
 ---
