@@ -10,4 +10,3 @@ section:
 
 Note that `ascii2uni -a U` didn't work properly for me for characters like `\u00FCc`.
 This should convert to *üc*, but the output was *࿌*.
-

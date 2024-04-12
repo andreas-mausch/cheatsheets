@@ -15,3 +15,5 @@ section:
 ---
 
 Base16 / String to hex: See xxd
+
+UTF-8 / Unicode / ISO-8859-1 / ASCII: See iconv
