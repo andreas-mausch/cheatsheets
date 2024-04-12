@@ -12,6 +12,10 @@ section:
       Encode: echo -n 'my-string' | base64 --wrap=0
       Decode: echo -n 'bXktc3RyaW5n' | base64 --decode
       Decode ignoring padding: echo -n 'aGVsbG8td29ybGQ'==== | fold -w 4 | head -n -1 | tr --delete '\n' | base64 --decode
+  - name: Hex to Binary / Bits / Bitwise
+    commands:
+      Encode: echo ff000a0d | tr a-z A-Z | awk '{print "obase=2; ibase=16; "$1}' | BC_LINE_LENGTH=0 b
+      Decode: echo 11111111000000000000101000001101 | awk '{print "obase=16; ibase=2; "$1}' | BC_LINE_LENGTH=0 bc
 ---
 
 Base16 / String to hex: See xxd
