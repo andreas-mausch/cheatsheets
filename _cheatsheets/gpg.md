@@ -31,6 +31,9 @@ section:
     commands:
       Export public key: gpg --output public.asc --armor --export username@email.com
       Export private key: gpg --output private.asc --armor --export-secret-key username@email.com
+  - name: Renew
+    commands:
+      Renew key and all non-expired subkeys: gpg --quick-set-expire 1111111190ABCDEF1234567890ABCDEF11111111 7w '*'
   - name: CLI Language
     commands:
       Set language to english: LANG=en gpg --version
