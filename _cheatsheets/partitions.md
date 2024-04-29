@@ -17,5 +17,5 @@ section:
   - name: Backup and zip
     commands:
       Backup and gzip: sudo dd if=/dev/X bs=1M | gzip > ./raspberrypi.dd.img.gz
-      Restore: sudo gzip --decompress --to-stdout ./raspberrypi.dd.img.gz | sudo dd of=/dev/X
+      Restore: sudo gzip --decompress --to-stdout ./raspberrypi.dd.img.gz | sudo dd of=/dev/X bs=1M
 ---
