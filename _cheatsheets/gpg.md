@@ -21,10 +21,10 @@ section:
   - name: Encrypt and decrypt
     commands:
       Encrypt file: gpg --encrypt --recipient username@email.com --output test.txt.gpg test.txt
-      Sign and encrypt file: gpg --sign --encrypt [...]
+      Sign and encrypt file (and optionally specify signing algorithm): gpg --sign --encrypt --digest-algo SHA256 [...]
       Specify algorithm: gpg --encrypt --cipher-algo AES256 [...]
       Disable compression: gpg --encrypt --compress-algo none [...]
-      List recipients of encrypted file (via Sequoia): sq inspect test.txt.gpg
+      "List recipients hints of encrypted file via Sequoia (note: this can be spoofed)": sq inspect test.txt.gpg
       Decrypt file (and automatically check signature, if available): gpg --decrypt test.txt.gpg --output test.decrypted.txt
       Inspect .gpg file: gpg --list-packets -vv --show-session-key test.txt.gpg
   - name: Export
@@ -79,8 +79,31 @@ Where `key-id` is either the long keyid or the fingerprint of your key.
 
 This information includes:
 
-- who the recipient is (the keyid hints who can decrypt the file)
+- who the recipient is
+  The keyid hints who can decrypt the file.
+  This info can be spoofed though.
 - which algorithm has been used for the symmetric part
+  See [here](https://github.com/gpg/gnupg/blob/467239dccbf975a19485eb5725b174b6f69aeca0/common/openpgpdefs.h#L133)
+  for a list of algorithms.
+
+> gpg: session key: '8:32050C047C47C519E76901EFC47FDFED0CD87CDB85809AFE'
+
+You can see the algorithm in the session key, the number before the colon.
+In this case, the algorithm is 8 (= AES192).
+
+In my case it showed `9.2`, which is AES256 in OCB mode.
+
+## TPM: Card error
+
+I have seen this error when trying to encrypt and sign a file without specifying the `digest-algo`.
+
+So if the algorithm is not compatible with the TPM, you might just see `Card error` instead of a proper error message.
+
+Fix: Explicitly set the algorithm to SHA256, which must be supported by the TPM.
+
+```bash
+gpg --sign --encrypt --digest-algo SHA256 [...]
+```
 
 ## Nitrokey
 
