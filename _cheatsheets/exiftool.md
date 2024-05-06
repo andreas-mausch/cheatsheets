@@ -19,10 +19,11 @@ section:
       Find all pictures from selfie camera (Samsung A40): "exiftool -recurse -if '$FNumber eq \"2.0\" and $FocalLength eq \"3.8 mm\"' -printFormat '$directory/$filename' -quiet -quiet ."
   - name: Date and time
     commands:
+      Find all date/time related tags: exiftool -short -groupNames1 -duplicates image.jpg | grep -i "date\|time\|offset\|zone"
       Change timezone (change to Havanna): exiftool "-SubSecDateTimeOriginal<\${DateTimeUTC;ShiftTime('-4:0:0')}" image.jpg
-      Set exif timestamp to mdate: exiftool "-DateTimeOriginal<FileModifyDate" "-FileModifyDate<FileModifyDate" image.jpg
+      Relative time change (+1 year, 12 month, 28 days, 14 hours, 54 minutes, 32 seconds; DateTimeUTC is a Olympus tag name, AllDates is a exiftool Shortcut tag): exiftool -DateTimeUTC-="1:12:28 14:54:32" -AllDates-="1:12:28 14:54:32" -verbose image.jpg
       Set mdate to exif timestamp: exiftool "-FileModifyDate<DateTimeOriginal" image.jpg
-      Relative time change (+1 year, 12 month, 28 days, 14 hours, 54 minutes, 32 seconds): exiftool -DateTimeUTC-="1:12:28 14:54:32" -AllDates-="1:12:28 14:54:32" -verbose image.jpg
+      Set exif timestamp to mdate: exiftool "-DateTimeOriginal<FileModifyDate" "-FileModifyDate<FileModifyDate" image.jpg
   - name: Location
     commands:
       Print GPS coordinates: exiftool -if '$gpslatitude' -a "-gps*" -ee -c "%.6f degrees" image.jpg
