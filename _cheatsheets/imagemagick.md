@@ -29,7 +29,7 @@ section:
       Subtract image: "magick composite image1.png image2.png -compose difference diff.png"
   - name: PDF
     commands:
-      Convert images to pdf: magick convert *.jpg -auto-orient output.pdf
+      Convert images to pdf: magick convert *.jpg -auto-orient -background white -page a4 output.pdf
   - name: Favicon
     commands:
       Convert .svg to .ico: magick -density 256x256 -background transparent favicon.svg -define icon:auto-resize -colors 256 favicon.ico
