@@ -11,6 +11,9 @@ section:
   - name: lsblk
     commands:
       Determine filesystem: lsblk -f
+  - name: Flash img
+    commands:
+      xz: xzcat 2024-03-15-raspios-bookworm-armhf-lite.img.xz | sudo dd of=/dev/mmcbzz0 bs=1M oflag=sync status=progress
   - name: Backup
     commands:
       Backup SD card: sudo dd if=/dev/sdb of=./raspberrypi.dd.img bs=1M status=progress
