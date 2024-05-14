@@ -11,6 +11,7 @@ section:
       Batch processing: "for i in *.jpg; do magick convert /* your options */ $i ${i/.jpg/.webp}; done"
       Preserve timestamp: "magick mogrify -define preserve-timestamp=true <filename.jpg>"
       Iterate big files: "find . \\( -iname \"*.jpg\" -o -iname \"*.jpeg\" \\) -type f -size +1500k -exec magick mogrify [...] {} \\;"
+      Crop from center: magick convert -gravity Center -crop 240x240+0+0 input.jpg output.jpg
   - name: Image information
     commands:
       Quality of jpeg: "magick identify -format '%Q' <filename.jpg>"
