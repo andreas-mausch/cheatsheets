@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: domain reverse lookup
+tags: dig reverse lookup
 section:
   - name: DNS lookup
     commands:
