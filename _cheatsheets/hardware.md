@@ -31,5 +31,5 @@ section:
       Find WiFis: nmcli dev wifi
   - name: Show USB devices
     commands:
-      List devices: lsusb [-v]
+      List devices: lsusb [--tree --verbose]
 ---
