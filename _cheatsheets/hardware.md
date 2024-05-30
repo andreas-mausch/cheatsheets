@@ -25,10 +25,13 @@ section:
     commands:
       Find wireless card (WiFi / WLAN): lspci | grep -i "wireless\|wifi"
       Show details (replace the number returned by previous command): lspci -vv -s 53:00.0
-      via lshw: lshw -C network
+      via lshw: sudo lshw -class network -short
       Find physical network devices: ls -l /sys/class/net/ | grep -v virtual
       Show IP and MAC address: ip addr show
       Find WiFis: nmcli dev wifi
+  - name: Disks
+    commands:
+      via lshw: sudo lshw -class disk -short
   - name: Show USB devices
     commands:
       List devices: lsusb [--tree --verbose]
