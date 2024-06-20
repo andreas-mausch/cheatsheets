@@ -41,7 +41,7 @@ section:
     commands:
       Count commits per author: git shortlog --summary --numbered --email --no-merges [--all]
       Count commits per day: git log --date=short --pretty=format:%ad | sort | uniq --count
-      Show all config entries with their origin: git config --list --show-origin
+      Show all config entries with their origin: git config --list --show-origin --show-scope
   - name: Stash
     commands:
       Stash with name: git stash push -m my-stash
