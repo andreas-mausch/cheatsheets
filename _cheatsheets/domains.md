@@ -27,3 +27,9 @@ section:
 # dig vs dog
 
 I recommend using [dog](https://github.com/ogham/dog), a command-line DNS client written in Rust.
+
+The only downsides vs. dig are
+
+1. the missing support for DNSSEC yet:
+[DNSSEC support : query and validation #65](https://github.com/ogham/dog/issues/65)
+2. and reverse lookups are not supported AFAIK
