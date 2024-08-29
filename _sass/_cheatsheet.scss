@@ -91,3 +91,43 @@ kbd {
   border-color: #ccc #aaa #888 #bbb;
   border-radius: 5px;
 }
+
+pre {
+  margin-bottom: 5px;
+}
+
+div.command {
+  margin-bottom: 15px;
+}
+
+.command-description {
+  display: block;
+  font-size: 90%;
+  color: #666;
+}
+
+dl.command-options {
+  display: grid;
+  grid-template-columns: max-content auto;
+  margin-left: 40px;
+  margin-bottom: 0;
+  gap: 0px 20px;
+  font-size: 90%;
+  align-items: center;
+
+  pre {
+    padding: 0;
+    margin: 0;
+  }
+
+  dt {
+    grid-column-start: 1;
+  }
+
+  dd {
+    grid-column-start: 2;
+    display: inline-block;
+    line-height: normal;
+    margin-top: 4px;
+  }
+}

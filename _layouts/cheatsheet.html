@@ -18,9 +18,26 @@ layout: default
 
     <div class="section-body">
       {% for command in section.commands %}
-      <div>
-        <span>{{ command[0] }}</span>
+      <div class="command">
+        {% comment %} Check if the command is just a `key: value` pair or a whole object {% endcomment %}
+        {% if command[0] %}
+        <span class="command-title">{{ command[0] }}</span>
         <pre>{{ command[1] | escape }}</pre>
+        {% else %}
+        <span class="command-title">{{ command.title }}</span>
+        {% if command.description %}
+        <span class="command-description">{{ command.description }}</span>
+        {% endif %}
+        <pre>{{ command.command | escape }}</pre>
+        {% if command.options %}
+        <dl class="command-options">
+        {% for option in command.options %}
+        <dt><pre>{{ option[0] }}</pre></dt>
+        <dd>{{ option[1] }}</dd>
+        {% endfor %}
+        </dl>
+        {% endif %}
+        {% endif %}
       </div>
       {% endfor %}
 
