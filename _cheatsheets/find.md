@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: filetypes files search duplicates same fdupes chmod
+tags: filetypes files search duplicates same fdupes chmod touch
 section:
   - name: File types
     commands:
@@ -18,7 +18,10 @@ section:
       Show linux file permissions in numeric format (e.g. 755): find . -maxdepth 1 -printf "%m %f\n"
   - name: Last change
     commands:
-      Show all files changed within the last year: find . -ctime 365 2>/dev/null
+      Show all files changed within the last year: find . -ctime -365
+      Show all files which are older than one year: find . -ctime +365
+      Create an old file for testing: touch -mt 200501011400 old_file
+      Use mtime instead of ctime: find . -mtime -365
   - name: Filter by pattern
     commands:
       Show only folders containing at least one file matching a pattern: find . -iname "dsc_*" -printf "%h\n" | sort -u
