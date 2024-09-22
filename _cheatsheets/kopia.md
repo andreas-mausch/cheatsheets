@@ -6,6 +6,8 @@ section:
     commands:
       Create repo: kopia repository create filesystem --path "/run/media/BKP2024-02/kopia/"
       Create snapshot: kopia snapshot create "/my/source/folder/"
+      Validate provider: kopia repository validate-provider
+      Mute update warnings: rm ~/.config/kopia/repository.config.update-info.json
   - name: Restore
     commands:
       Connect: kopia repository connect filesystem --path "/run/media/BKP2024-02/kopia/"
