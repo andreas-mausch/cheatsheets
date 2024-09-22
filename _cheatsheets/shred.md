@@ -10,6 +10,7 @@ section:
           -u: "--remove: truncate and remove file after overwriting"
           -v: --verbose
           -z: "--zero: add a final overwrite with zeros to hide shredding"
+          -n: "--iterations: overwrite N times instead of the default (3)"
 ---
 
 Be very careful when using this!
