@@ -22,11 +22,23 @@ section:
       search command: paru -F glxinfo # will output extra/mesa-utils
   - name: Installed packages
     commands:
-      search package: paru -Qs <package>
-      package details: paru -Qii <package>
-      list files: paru -Ql <package>
-      orphans: paru -Qdt
-      manually installed (list all aur): pacman -Qm
+      - title: search package
+        command: paru -Qs <package>
+      - title: package details
+        command: paru -Qii <package>
+      - title: list files
+        command: paru -Ql <package>
+      - title: orphans
+        command: paru -Qdt
+      - title: manually installed (list all aur)
+        command: pacman -Qm
+      - title: manually installed (aur and non-aur)
+        command: pacman -Qqe | grep -v "$(awk '{print $1}' /desktopfs-pkgs.txt)"
+        source: https://www.reddit.com/r/ManjaroLinux/comments/fzog8g/get_a_list_of_packages_you_installed_yourself/
+        options:
+          -Q: "--query: Query the package database"
+          -q: --quiet
+          -e: "--explicit: Restrict or filter output to explicitly installed packages"
   - name: Clean-up
     commands:
       clear cache: paru -Sc
