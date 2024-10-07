@@ -28,6 +28,9 @@ layout: default
         {% if command.description %}
         <span class="command-description">{{ command.description }}</span>
         {% endif %}
+        {% if command.source %}
+        <span class="command-source">{{ command.source }}</span>
+        {% endif %}
         <pre>{{ command.command | escape }}</pre>
         {% if command.options %}
         <dl class="command-options">
