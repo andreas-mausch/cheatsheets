@@ -18,6 +18,7 @@ section:
       Show linux file permissions in numeric format (e.g. 755): find . -maxdepth 1 -printf "%m %f\n"
   - name: Last change
     commands:
+      All files changed in the last 3 minutes in your home: find ~ -mmin -3 -ls
       Show all files changed within the last year: find . -ctime -365
       Show all files which are older than one year: find . -ctime +365
       Create an old file for testing: touch -mt 200501011400 old_file
