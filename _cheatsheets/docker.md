@@ -16,6 +16,7 @@ section:
   - name: ps
     commands:
       Find testcontainers: docker ps --filter "label=org.testcontainers=true"
+      List all assigned IP addresses: "docker ps -q | xargs docker inspect --format '{{.Id}};{{.Name}};{{range $key, $value := .NetworkSettings.Networks}};{{if $value.IPAddress}}{{$key}}: {{$value.IPAddress}};{{end}}{{end}}' | sed 's/;$//' | column --table --separator ';'"
   - name: inspect
     commands:
       Health: docker inspect --format='{{json .State.Health}}' container_name
