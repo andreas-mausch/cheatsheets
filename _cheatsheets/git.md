@@ -39,7 +39,7 @@ section:
       Complete repo: git bundle create (basename (git rev-parse --show-toplevel)).git.bundle --all
   - name: List
     commands:
-      Count commits per author: git shortlog --summary --numbered --email --no-merges [--all]
+      Count commits per author: git shortlog --summary --numbered --email --no-merges --since "last 2 weeks" [--all]
       Count commits per day: git log --date=short --pretty=format:%ad | sort | uniq --count
       Show all config entries with their origin: git config --list --show-origin --show-scope
   - name: Stash
