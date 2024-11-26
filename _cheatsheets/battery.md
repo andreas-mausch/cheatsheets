@@ -8,6 +8,7 @@ section:
       Manufacture date and serial number: sudo dmidecode -t 22
       Show cycle count: cat /sys/class/power_supply/BAT0/cycle_count
   - name: Capacity
+    commands:
       Original (design) capacity: cat /sys/class/power_supply/BAT0/energy_full_design
       Remaining capacity on full charge: /sys/class/power_supply/BAT0/energy_full
       acpi: acpi -V
