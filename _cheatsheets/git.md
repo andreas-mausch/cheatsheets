@@ -37,6 +37,7 @@ section:
   - name: bundle
     commands:
       Complete repo: git bundle create (basename (git rev-parse --show-toplevel)).git.bundle --all
+      Show repo size (do git gc first): git count-objects --verbose --human-readable | grep size-pack
   - name: List
     commands:
       Count commits per author: git shortlog --summary --numbered --email --no-merges --since "last 2 weeks" [--all]
