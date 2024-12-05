@@ -16,6 +16,12 @@ section:
     commands:
       Revert last 3 commits: git revert --no-commit HEAD~3..
       Undo last local commit, but keep changes: git reset HEAD~
+  - name: History
+    commands:
+      Show file at commit hash: git show 24a255c1:src/main.rs
+      Show file at absolute date: git show HEAD@{2013-02-25}:src/main.rs
+      Show file at relative date: git show HEAD@{3 days ago}:src/main.rs
+      For date older than 90 days: git show (git rev-list -1 --before="2024-07-13" HEAD):src/main.rs
   - name: Prune remote branches
     commands:
       Only prune remote branches: git remote prune origin
