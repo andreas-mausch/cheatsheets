@@ -22,8 +22,8 @@ section:
       Health: docker inspect --format='{{json .State.Health}}' container_name
   - name: compose
     commands:
-      run command inside container: docker-compose exec container bash
-      delete everything (including volumes): docker-compose down --volumes
+      run command inside container: docker compose exec container bash
+      delete everything (including volumes): docker compose down --volumes
   - name: swarm
     commands:
       list nodes: docker node ls
