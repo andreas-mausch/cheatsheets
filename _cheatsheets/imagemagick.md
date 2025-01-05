@@ -42,6 +42,9 @@ section:
       optipng: optipng image.png
       pngquant (lossy): pngquant image.png
       svgo: svgo image.svg -o image.min.svg
+  - name: Text
+    commands:
+      Generate an image with a text: magick [+antialias] -background black -fill red -font 'Dejavu-Sans' -pointsize 12 label:'This is my text' output.png
 ---
 
 See here: https://imagemagick.org/script/command-line-options.php#format_identify_
