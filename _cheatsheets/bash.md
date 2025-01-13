@@ -8,6 +8,7 @@ section:
       - title: My favorite shebang
         command: '#!/usr/bin/env -S bash -e -x'
         options:
+          -S: "--split-string: process and split S into separate arguments; used to pass multiple arguments on shebang lines"
           -e: Exit immediately if a command fails
           -x: Print a trace of simple commands
 ---
