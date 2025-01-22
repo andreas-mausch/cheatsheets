@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: encoding charset convert ascii2uni uni2ascii
+tags: encoding charset convert unicode ascii2uni uni2ascii utf-8 iso-8559-1
 section:
   - name: Convert
     commands:
