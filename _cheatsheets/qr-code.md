@@ -5,7 +5,14 @@ logo: data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgi
 section:
   - name: Encode
     commands:
-      Generate from string: qrencode [--8bit] [--level H] --output qr.png "This is my text"
+      - title: Generate from string
+        command: qrencode --output qr.png "This is my text"
+        options:
+          -8: "--8bit"
+          -l: "--level: specify error correction level from L (lowest) to H (highest). (default=L) {LMQH}"
+          -o: "--output: write image to FILENAME. If '-' is specified, the result will be output to standard output."
+          -t: "--type: specify the type of the generated image. (default=PNG) {PNG,PNG32,EPS,SVG,XPM,ANSI,ANSI256,ASCII,ASCIIi,UTF8,UTF8i,ANSIUTF8,ANSIUTF8i,ANSI256UTF8}"
+          --svg-path: use single path to draw modules for SVG.
   - name: Decode
     commands:
       Decode from .png file: zbarimg -1 --raw -q -Sbinary qr.png
