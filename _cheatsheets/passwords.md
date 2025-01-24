@@ -5,8 +5,8 @@ logo: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9z
 section:
   - name: Password generation
     commands:
-      12 characters: cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 12 | sed -r 's/(.{4})/\1-/g' | sed -r 's/(.*)-$/\1\n/g'
-      16 characters: cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 16 | sed -r 's/(.{4})/\1-/g' | sed -r 's/(.*)-$/\1\n/g'
+      12 characters: cat /dev/random | tr -dc 'a-zA-Z0-9' | head -c 12 | sed -r 's/(.{4})/\1-/g' | sed -r 's/(.*)-$/\1\n/g'
+      16 characters: cat /dev/random | tr -dc 'a-zA-Z0-9' | head -c 16 | sed -r 's/(.{4})/\1-/g' | sed -r 's/(.*)-$/\1\n/g'
 ---
 
 # Entropy
