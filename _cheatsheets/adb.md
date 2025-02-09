@@ -10,6 +10,7 @@ section:
   - name: pm
     commands:
       Find app / package: adb shell pm list packages | grep -i whatsapp
+      Find app version: adb shell dumpsys package packages | grep -E 'Package \[|versionName'
   - name: Backup files
     commands:
       Copy files from phone to computer: adb pull -a /sdcard/DCIM/Camera/
