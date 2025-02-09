@@ -100,3 +100,26 @@ find ./Andere/ \( -iname "*.jpg" -o -iname "*.jpeg" \) -type f -size +1500k -exe
 ```bash
 adb shell dumpsys package packages | grep -E 'Package \[|versionName' | grep -A 1 -i appname
 ```
+
+# List all apps, version number, installer, flags and status
+
+```bash
+adb shell pm list packages -f | while read -r line
+do
+  APK_PATH=$(echo $line | sed -n 's/package:\(.*\.apk\)=\(.*\)/\1/p')
+  PACKAGE_NAME=$(echo $line | sed -n 's/package:\(.*\.apk\)=\(.*\)/\2/p')
+
+  DUMPSYS_OUTPUT=$(adb shell dumpsys package "$PACKAGE_NAME" <<< "")
+  DUMPSYS_FLAGS=$(echo "$DUMPSYS_OUTPUT" | sed -n 's/^    flags=\(\[ .* ]\)/\1/p')
+  DUMPSYS_VERSION=$(echo "$DUMPSYS_OUTPUT" | sed -n 's/^    versionName=\(.*\)/\1/p')
+  DUMPSYS_INSTALLER=$(echo "$DUMPSYS_OUTPUT" | sed -n 's/^    installerPackageName=\(.*\)/\1/p')
+  DUMPSYS_USER0=$(echo "$DUMPSYS_OUTPUT" | sed -n 's/^    User 0: \(.*\)/\1/p')
+
+  echo "$PACKAGE_NAME"
+  echo "  APK: $APK_PATH"
+  echo "  Flags: $DUMPSYS_FLAGS"
+  echo "  Version: $DUMPSYS_VERSION"
+  echo "  Installer: $DUMPSYS_INSTALLER"
+  echo "  User 0: $DUMPSYS_USER0"
+done
+```
