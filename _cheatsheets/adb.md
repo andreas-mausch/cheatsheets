@@ -7,6 +7,9 @@ section:
     commands:
       Uninstall, but keep data: adb uninstall -k com.mycompany.myapp
       Install, but keep data: adb install -r myapp.apk
+  - name: pm
+    commands:
+      Find app / package: adb shell pm list packages | grep -i whatsapp
   - name: Backup files
     commands:
       Copy files from phone to computer: adb pull -a /sdcard/DCIM/Camera/
