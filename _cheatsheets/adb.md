@@ -10,7 +10,7 @@ section:
   - name: pm
     commands:
       Find app / package: adb shell pm list packages | grep -i whatsapp
-      Find app version: adb shell dumpsys package packages | grep -E 'Package \[|versionName'
+      Find app version: adb shell dumpsys package packages | grep -E 'Package \[|versionName' | grep -A 1 -i appname
   - name: Backup files
     commands:
       Copy files from phone to computer: adb pull -a /sdcard/DCIM/Camera/
@@ -93,12 +93,6 @@ find *.jpg -type f -size +1500k -exec magick mogrify [...] {} \;
 
 ```bash
 find ./Andere/ \( -iname "*.jpg" -o -iname "*.jpeg" \) -type f -size +1500k -exec magick mogrify -resize "3840x3840>" -quality 75 -define preserve-timestamp=true {} \;
-```
-
-# List all apps with their version number
-
-```bash
-adb shell dumpsys package packages | grep -E 'Package \[|versionName' | grep -A 1 -i appname
 ```
 
 # List all apps, version number, installer, flags and status
