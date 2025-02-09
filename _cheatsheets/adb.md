@@ -103,6 +103,8 @@ adb shell dumpsys package packages | grep -E 'Package \[|versionName' | grep -A 
 
 # List all apps, version number, installer, flags and status
 
+Tested on Android 15, OneUI 7.0, Samsung S25, 2025-02
+
 ```bash
 adb shell pm list packages -f | while read -r line
 do
