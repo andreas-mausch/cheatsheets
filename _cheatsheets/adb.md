@@ -21,6 +21,10 @@ section:
   - name: Send files to phone
     commands:
       push: adb push --sync -a ./local-folder /sdcard/Download/
+  - name: Update media cache
+    commands:
+      Refresh: adb shell content call --method scan_volume --uri content://media --arg external_primary
+      Follow logs: adb logcat -s MediaProvider
 ---
 
 # Phone backup
