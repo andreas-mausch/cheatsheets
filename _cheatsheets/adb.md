@@ -18,6 +18,9 @@ section:
     commands:
       Copy files from phone to computer: adb pull -a /sdcard/DCIM/Camera/
       Using glob: adb shell 'ls /sdcard/DCIM/Camera/202407*.jpg' | tr -d '\r' | xargs -n1 adb pull -a
+  - name: Send files to phone
+    commands:
+      push: adb push --sync -a ./local-folder /sdcard/Download/
 ---
 
 # Phone backup
