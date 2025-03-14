@@ -7,5 +7,6 @@ section:
     commands:
       Record: asciinema rec ./recording.cast
       Record as 80x24: xfce4-terminal --geometry=80x24 --command="asciinema rec ./recording.cast"
+      Also hide suggestions: xfce4-terminal --geometry=80x24 --command="asciinema rec ./recording.cast --command='/usr/bin/fish --private --init-command=\"function fish_greeting; end\"'"
       Convert to SVG: svg-term --in recording.cast --out recording.svg
 ---
