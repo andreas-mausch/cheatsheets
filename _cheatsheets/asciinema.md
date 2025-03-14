@@ -5,6 +5,7 @@ logo: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9z
 section:
   - name: Create cast
     commands:
-      Record: asciinema rec ./record.cast
-      Convert to SVG: svg-term --in record.cast --out record.svg
+      Record: asciinema rec ./recording.cast
+      Record as 80x24: xfce4-terminal --geometry=80x24 --command="asciinema rec ./recording.cast"
+      Convert to SVG: svg-term --in recording.cast --out recording.svg
 ---
