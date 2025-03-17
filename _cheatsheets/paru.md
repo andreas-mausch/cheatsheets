@@ -28,6 +28,8 @@ section:
         command: paru -Qii <package>
       - title: list files
         command: paru -Ql <package>
+      - title: Show package for file or binary
+        command: pacman -Qo helix
       - title: orphans
         command: paru -Qdt
       - title: manually installed (list all aur)
