@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: image-processing exif gps gpx tracking
+tags: image-processing exif gps gpx tracking datetime timezones
 logo: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAC1klEQVR4nOzdUUokMRRAUTO4jp79L0s3kvmR+dILPVabTPqcf+GVeCFQz9TrnPMF+Nyv1QPAzgQCQSAQBAJBIBAEAkEgEAQCQSAQBAJBIBAEAkEgEAQCQSAQBAJBIBAEAkEgEAQCQSAQBAJBIBAEAkEgEAQCQSAQBAJBIBAEAkEgEF5XD/CJ2+oBNvO+eoBntmMgL2OMt9Uz7GDO+Xv1DM/OEQuCQCAIBIJAIAgEgkAgCASCQCAIBIJAIAgEgkAgbLms+B1zznHnj9ge5kvHBfIPrJPzJUcsCAKBIBAIAoEgEAgCgSAQCN6D3M+LxZ+19D3ViYHcHvhLvbmS6Gd9XH20LBJHLAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgnbvM+dPNz1w9rfnfLeNfnWu3EQB5p1zu0rvoflV2fbxlHLAgCgSAQCAKBIBAIAoEgEAgCgfAMLwr/94vevLxb6LhAxhhz9QxXsf6xniMWBIFAEAgEgUAQCASBQBAIBIFAEAgEgUAQCASBQDhuWdGCH1c6LpAPVsS5hCMWBIFAEAgEgUAQCASBQBAIBIFAEAgEgUAQCASBQBAIBIFAEAgEgUAQCASBQBAIBIFAEAgEgUAQCASBQBAIBIFAEAgEgUAQCASBQBAIBIFAEAgEgUAQCIRTv1F4Wz3AhXxvcaHjAhljvK2e4Sq+2LueIxYEgUAQCASBQBAIBIFAEAgEgUAQCASBQBAIBIFAEAiEHbd5322x/mXVfbEdA3nxh8EuHLEgCASCQCAIBIJAIAgEgkAgCASCQCAIBIJAIAgEgkAgCASCQCAIBIJAIAgEgkAgCASCQCDseqsJd3JV0mOMOefqGWBbjlgQBAJBIBAEAkEgEAQCQSAQBAJBIBAEAkEgEAQCQSAQBAJBIBAEAkEgEAQCQSAQBAJBIBAEAkEgEAQCQSAQBAJBIBAEAkEgEP4EAAD//yN2OIYOHW/tAAAAAElFTkSuQmCC
 section:
   - name: Print
@@ -24,6 +24,8 @@ section:
       Relative time change (+1 year, 12 month, 28 days, 14 hours, 54 minutes, 32 seconds; DateTimeUTC is a Olympus tag name, AllDates is a exiftool Shortcut tag): exiftool -DateTimeUTC-="1:12:28 14:54:32" -AllDates-="1:12:28 14:54:32" -verbose image.jpg
       Set mdate to exif timestamp: exiftool "-FileModifyDate<DateTimeOriginal" image.jpg
       Set exif timestamp to mdate: exiftool "-DateTimeOriginal<FileModifyDate" "-FileModifyDate<FileModifyDate" image.jpg
+      Pipe result from find to exiftool (works with space in filepath): find . -iname 'P*.JPG' | exiftool "-FileModifyDate<DateTimeOriginal" -@ -
+      Test pipe result first: find . -iname 'P*.JPG' | exiftool -filename -@ -
   - name: Location
     commands:
       Print GPS coordinates: exiftool -if '$gpslatitude' -a "-gps*" -ee -c "%.6f degrees" image.jpg
