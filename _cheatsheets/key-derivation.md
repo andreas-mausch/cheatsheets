@@ -4,6 +4,7 @@ tags: key derivation function hkdf
 section:
   - name: openssl
     commands:
+      List supported algorithms: openssl list -kdf-algorithms
       HKDF: openssl kdf [-binary] -keylen 10 -kdfopt digest:SHA2-256 -kdfopt key:secret [-kdfopt salt:salt] -kdfopt info:label HKDF
       Argon2: openssl kdf -keylen 16 -kdfopt pass:secret -kdfopt salt:saltsalt -kdfopt iter:2048 -kdfopt memcost:8 Argon2id
 ---
