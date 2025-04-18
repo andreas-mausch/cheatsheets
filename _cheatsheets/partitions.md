@@ -8,6 +8,7 @@ section:
   - name: du
     commands:
       Folder size: du -sh --apparent-size .
+      Item sizes, sorted: du -sh --apparent-size * | sort -h
   - name: lsblk
     commands:
       Determine filesystem: lsblk --fs --perms --paths
