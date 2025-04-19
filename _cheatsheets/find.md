@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: filetypes files search duplicates same fdupes chmod touch
+tags: filetypes files search duplicates same fdupes chmod touch xargs
 section:
   - name: File types
     commands:
