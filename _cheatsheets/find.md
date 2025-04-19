@@ -9,6 +9,7 @@ section:
       Largest files: find . -type f -exec du -Sh {} + | sort -rh | head -n 10
   - name: Clean up
     commands:
+      Delete all files matching a pattern recursively (remove the echo): find . -type f -name '*.log' -print0 | xargs --null [--max-args=1] echo rm --verbose
       Delete node_modules recursively: find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
   - name: Search for duplicates in two directories
     commands:
@@ -26,6 +27,7 @@ section:
   - name: Filter by pattern
     commands:
       Show only folders containing at least one file matching a pattern: find . -iname "dsc_*" -printf "%h\n" | sort -u
+      Run with xargs: find . -type f -name '*.log' -print0 | xargs --null -I{} echo 'File is {}.'
   - name: Find string in files
     commands:
       grep: grep -iRs --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=.git --exclude=package-lock.json "string" .
