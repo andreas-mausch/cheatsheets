@@ -17,7 +17,9 @@ section:
     commands:
       Connect: kopia repository connect filesystem --no-check-for-updates --path '/mnt/kopia-backup/kopia'
       Create snapshot: kopia snapshot create /mnt/nas/
-      List snapshots: kopia snapshot list --all
+      List snapshots: kopia snapshot list --all --storage-stats
+      Content stats: kopia content stats
+      Blob stats: kopia blob stats
   - name: Inspect snapshot
     commands:
       List files in snapshot: kopia ls -l kbdae7e8xxx
