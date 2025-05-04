@@ -34,3 +34,16 @@ Unfortunately, the [error correction](https://kopia.io/docs/advanced/ecc/) is st
 
 [This post](https://kopia.discourse.group/t/error-correction-algorithm-questions/1585) mentions the project
 is not actively maintained. :(
+
+Full list of commands to create a new snapshot:
+
+```bash
+lsblk --fs --perms --paths
+sudo mount /dev/sdb1 /mnt/kopia-backup/
+kopia repository connect filesystem --no-check-for-updates --path '/mnt/kopia-backup/kopia/'
+kopia snapshot create /mnt/nas/
+kopia snapshot list --all --storage-stats
+sync
+sudo umount /mnt/kopia-backup
+sudo udisksctl power-off -b /dev/sdb
+```
