@@ -5,8 +5,8 @@ logo: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9z
 section:
   - name: Password generation
     commands:
-      12 characters: cat /dev/random | tr -dc 'a-zA-Z0-9' | head -c 12 | sed -r 's/(.{4})/\1-/g' | sed -r 's/(.*)-$/\1\n/g'
-      16 characters: cat /dev/random | tr -dc 'a-zA-Z0-9' | head -c 16 | sed -r 's/(.{4})/\1-/g' | sed -r 's/(.*)-$/\1\n/g'
+      12 characters: cat /dev/random | tr -dc '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz' | head -c 12 | sed -r 's/(.{4})/\1-/g' | sed -r 's/(.*)-$/\1\n/g'
+      20 characters: cat /dev/random | tr -dc '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz' | head -c 20 | sed -r 's/(.{4})/\1-/g' | sed -r 's/(.*)-$/\1\n/g'
 ---
 
 # Entropy
@@ -32,3 +32,12 @@ To reach 128-bit, you'd need 22 characters:
 $ qalc 'log(62^22; 2)'
 log(62^22; 2) = 22 + (22 × ln(31)) / ln(2) ≈ 130,9923188
 ```
+
+Update: I have changed the alphabet from [a-zA-Z0-9] to Base58 (123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz)
+to avoid similar looking letters when written down.
+
+This reduces the entropy a bit and is now:
+
+- **70 bits** for 12 characters
+- **93 bits** for 16 characters
+- **117 bits** for 20 characters
