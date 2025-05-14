@@ -32,13 +32,19 @@ section:
         command: pacman -Qo helix
       - title: orphans
         command: paru -Qdt
-      - title: manually installed (list all aur)
+      - title: foreign packages (usually aur)
         command: pacman -Qm
+      - title: manually installed
+        command: pacman -Qet
+        options:
+          -Q: "--query: Query the package databasey"
+          -e: "--explicit: Restrict or filter output to explicitly installed packages"
+          -t: "not a dependency (i.e., top-level packages)"
       - title: manually installed (aur and non-aur)
         command: pacman -Qqe | grep -v "$(awk '{print $1}' /desktopfs-pkgs.txt)"
         source: https://www.reddit.com/r/ManjaroLinux/comments/fzog8g/get_a_list_of_packages_you_installed_yourself/
         options:
-          -Q: "--query: Query the package database"
+          -Q: "--query: Query the package databasey"
           -q: --quiet
           -e: "--explicit: Restrict or filter output to explicitly installed packages"
   - name: Clean-up
