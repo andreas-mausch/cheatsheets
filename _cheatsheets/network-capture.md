@@ -14,6 +14,17 @@ section:
   - name: httptap
     commands:
       Capture: httptap -- curl https://andreas-mausch.de
+  - name: Show open connections
+    commands:
+      - title: ss
+        description: ss is a modern replacement for netstat
+        command: sudo ss -tunap | sort -k1
+        options:
+          -t: "--tcp: Display TCP sockets."
+          -u: "--udp: Display UDP sockets."
+          -n: "--numeric: Do not try to resolve service names."
+          -a: "--all: Display both listening and non-listening (for TCP this means established connections) sockets."
+          -p: "--processes: Show process using socket."
 ---
 
 <https://github.com/mozillazg/ptcpdump>
