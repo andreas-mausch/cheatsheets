@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: filetypes files search duplicates same fdupes chmod touch xargs
+tags: filetypes files search duplicates same fdupes chmod touch xargs fd
 section:
   - name: File types
     commands:
@@ -32,3 +32,6 @@ section:
     commands:
       grep: grep -iRs --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=.git --exclude=package-lock.json "string" .
 ---
+
+Scratch all of the above and use [fd](https://github.com/sharkdp/fd),
+a simple, fast and user-friendly alternative to 'find'.
