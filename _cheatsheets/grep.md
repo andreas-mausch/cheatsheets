@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: search
+tags: search rg ripgrep
 section:
   - name: Search file contents
     commands:
@@ -14,3 +14,5 @@ section:
           -l: "--files-with-matches: Suppress normal output; instead print the name of each input file from which output would normally have been printed."
           -s: "--no-messages: Suppress error messages about nonexistent or unreadable files. (This hides 'Permission denied' spam)"
 ---
+
+A very good alternative to grep is [ripgrep](https://github.com/BurntSushi/ripgrep).
