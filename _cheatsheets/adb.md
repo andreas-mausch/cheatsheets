@@ -28,6 +28,7 @@ section:
   - name: Android TV
     commands:
       Put to sleep: adb shell input keyevent KEYCODE_POWER
+      Wake up: adb shell input keyevent KEYCODE_WAKEUP
 ---
 
 # Phone backup
