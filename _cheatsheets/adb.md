@@ -25,6 +25,9 @@ section:
     commands:
       Refresh: adb shell content call --method scan_volume --uri content://media --arg external_primary
       Follow logs: adb logcat -s MediaProvider
+  - name: Android TV
+    commands:
+      Put to sleep: adb shell input keyevent KEYCODE_POWER
 ---
 
 # Phone backup
