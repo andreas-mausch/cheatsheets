@@ -19,4 +19,5 @@ section:
     commands:
       "Scan (sn: Skip port scan, oG: Grepable output)": nmap -sn -oG - 192.168.178.0/24
       Scan (automatically detect network range, one-liner): nmap -v0 -sn -oG - `ip addr show en0 | grep "inet\b" | awk '{print $2}'`
+      Scan single host for open ports: sudo nmap -p- -Pn -sS -sV -T4 --disable-arp-ping --max-retries 1 --initial-rtt-timeout 100ms --max-rtt-timeout 500ms --min-rate 1000 -vv my.host
 ---
