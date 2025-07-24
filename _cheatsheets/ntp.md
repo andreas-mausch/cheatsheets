@@ -5,10 +5,11 @@ logo: data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgi
 section:
   - name: Update
     commands:
-      Get time from server: sudo ntpdate time.nist.gov
-      Update hardware clock to currently set time: sudo hwclock --systohc
+      Update time on local system: sudo ntpdate time.nist.gov
+      Update hardware clock to currently set local system time: sudo hwclock --systohc
   - name: Show
     commands:
+      Just query and display the server time: ntpdate -q time.nist.gov
       Show hardware clock: sudo hwclock --show
       Show time information: timedatectl status
       Query ntpd: ntpdc -c sysinfo
