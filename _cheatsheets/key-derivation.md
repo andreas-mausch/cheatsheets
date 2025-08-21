@@ -1,12 +1,13 @@
 ---
 layout: cheatsheet
-tags: key derivation function hkdf
+tags: key derivation function hkdf pbkdf2 bip39
 section:
   - name: openssl
     commands:
       List supported algorithms: openssl list -kdf-algorithms
       HKDF: openssl kdf [-binary] -keylen 10 -kdfopt digest:SHA2-256 -kdfopt key:secret [-kdfopt salt:salt] -kdfopt info:label HKDF
       Argon2: openssl kdf -keylen 16 -kdfopt pass:secret -kdfopt salt:saltsalt -kdfopt iter:2048 -kdfopt memcost:8 Argon2id
+      PBKDF2: openssl kdf -keylen 64 -kdfopt digest:sha512 -kdfopt iter:2048 -kdfopt pass:'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about' -kdfopt salt:'mnemonicMYPASSPHRASE' pbkdf2
 ---
 
 The salt in HKDF is optional, see [here](https://crypto.stackexchange.com/questions/97975/applications-in-which-you-should-shouldnt-use-a-salt-with-hkdf).
