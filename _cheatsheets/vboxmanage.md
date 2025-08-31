@@ -8,5 +8,5 @@ section:
       List virtual machines: VBoxManage list vms
   - name: Run
     commands:
-      Start virtual machine: VBoxManage startvm "Bitbox"
+      Start virtual machine: VBoxManage startvm "MyVM"
 ---
