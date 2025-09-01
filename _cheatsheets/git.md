@@ -23,6 +23,7 @@ section:
       Show file at relative date: git show HEAD@{3 days ago}:src/main.rs
       For date older than 90 days: git show (git rev-list -1 --before="2024-07-13" HEAD):src/main.rs
       Shorten commit hash: git rev-parse --short d6f8e95b7bc1f5dcde6c8892bca8fe9c7a5b32d2
+      Restore file to previous version at revision: git checkout 24a255c1 -- file/to/restore
   - name: Prune remote branches
     commands:
       Only prune remote branches: git remote prune origin
