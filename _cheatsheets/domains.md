@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: dns dig dog nslookup reverse lookup
+tags: dns dig dog drill nslookup reverse lookup
 section:
   - name: DNS lookup
     commands:
@@ -24,7 +24,7 @@ section:
 
 [Source](https://unix.stackexchange.com/questions/93808/dig-vs-nslookup)
 
-# dig vs dog
+# dig vs. dog
 
 I recommend using [dog](https://github.com/ogham/dog), a command-line DNS client written in Rust.
 
@@ -33,3 +33,10 @@ The only downsides vs. dig are
 1. the missing support for DNSSEC yet:
 [DNSSEC support : query and validation #65](https://github.com/ogham/dog/issues/65)
 2. and reverse lookups are not supported AFAIK
+
+# dig vs. drill
+
+dig on Arch Linux can only be installed via the `bind` package,
+which is a bit heavy.
+
+There is also the `drill` command, but I haven't tested it much yet.
