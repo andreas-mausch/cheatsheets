@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: nghttp http2 http3 ssl tls certificates
+tags: nghttp http2 http3 ssl tls certificates load-testing rate-limit
 section:
   - name: curl
     commands:
@@ -11,3 +11,5 @@ section:
     commands:
       List resources (s=print stats, a=download assets, n=discard data): "nghttp --stat --get-assets --null-out https://andreas-mausch.de"
 ---
+
+For load testing, I recommend the tool [oha](https://github.com/hatoo/oha).
