@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: nghttp http2 http3 ssl tls certificates load-testing rate-limit
+tags: nghttp http2 http3 ssl tls certificates load-testing rate-limit oha
 section:
   - name: curl
     commands:
