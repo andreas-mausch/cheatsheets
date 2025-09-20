@@ -9,4 +9,5 @@ section:
       String to Hex: echo example | xxd
       String to Hexdump (without ascii view): echo example | xxd -p -u
       Hexdump to Binary: echo 746573740a | xxd -p -r
+      Avoid newline linebreaks: echo 746573740a | xxd -plain -revert -cols 999999
 ---
