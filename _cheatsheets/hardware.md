@@ -28,6 +28,7 @@ section:
       via lshw: sudo lshw -class network -short
       Find physical network devices: ls -l /sys/class/net/ | grep -v virtual
       Show IP and MAC address: ip addr show
+      Show IP address only: ip -br a
       Find WiFis: nmcli dev wifi
   - name: Disks
     commands:
