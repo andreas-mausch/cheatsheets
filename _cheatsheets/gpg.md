@@ -27,6 +27,7 @@ section:
       "List recipients hints of encrypted file via Sequoia (note: this can be spoofed)": sq inspect test.txt.gpg
       Decrypt file (and automatically check signature, if available): gpg --decrypt test.txt.gpg --output test.decrypted.txt
       Inspect .gpg file: gpg --list-packets -vv --show-session-key test.txt.gpg
+      Inspect via sq: sq packet dump test.txt.gpg
   - name: Export
     commands:
       Export public key: gpg --output public.asc --armor --export username@email.com
