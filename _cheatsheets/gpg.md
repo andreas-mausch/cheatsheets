@@ -5,9 +5,9 @@ logo: data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgi
 section:
   - name: Generate private and public key
     commands:
+      Single command with no user input needed: gpg --quick-generate-key "My Name (MyComment) <my@email.com>" rsa4096 cert,sign,auth,encrypt 30d
       Generate key: gpg --default-new-key-algo rsa4096 --gen-key
       Set encryption flag on key: gpg --edit-key me@email.com change-usage
-      Single command with no user input needed: gpg --quick-generate-key "My Name (MyComment) <my@email.com>" ed25519:cv25519 cert,sign,auth,encrypt 30d
   - name: List
     commands:
       List public keys: gpg --list-public-keys --keyid-format long
