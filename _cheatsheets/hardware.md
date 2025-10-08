@@ -33,6 +33,7 @@ section:
   - name: Disks
     commands:
       via lshw: sudo lshw -class disk -short
+      via inxi: sudo inxi -Dxxd
   - name: Show USB devices
     commands:
       List devices: lsusb [--tree --verbose]
