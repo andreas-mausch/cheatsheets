@@ -6,6 +6,7 @@ section:
   - name: Generate private and public key
     commands:
       Single command with no user input needed: gpg --quick-generate-key "My Name (MyComment) <my@email.com>" rsa4096 cert,sign,auth,encrypt 30d
+      Single command with sq: sq key generate --own-key --userid="My Name (MyComment) <my@email.com>" --cannot-authenticate --cannot-encrypt --expiration=30d
       Generate key: gpg --default-new-key-algo rsa4096 --gen-key
       Set encryption flag on key: gpg --edit-key me@email.com change-usage
   - name: List
