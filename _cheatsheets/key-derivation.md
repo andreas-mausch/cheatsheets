@@ -6,7 +6,7 @@ section:
     commands:
       List supported algorithms: openssl list -kdf-algorithms
       HKDF: openssl kdf [-binary] -keylen 10 -kdfopt digest:SHA2-256 -kdfopt key:secret [-kdfopt salt:salt] -kdfopt info:label HKDF
-      Argon2: openssl kdf -keylen 16 -kdfopt pass:secret -kdfopt salt:saltsalt -kdfopt iter:2048 -kdfopt memcost:8 Argon2id
+      Argon2: openssl kdf -binary -keylen 64 -kdfopt pass:(echo -n secret) -kdfopt hexsalt:(openssl rand -hex 16) -kdfopt iter:4 -kdfopt memcost:262144 -kdfopt lanes:4 Argon2id | xxd -plain -u -cols 99999
       PBKDF2: openssl kdf -keylen 64 -kdfopt digest:sha512 -kdfopt iter:2048 -kdfopt pass:'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about' -kdfopt salt:'mnemonicMYPASSPHRASE' pbkdf2
 ---
 
