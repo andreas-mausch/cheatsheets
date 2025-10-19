@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: key derivation function hkdf pbkdf2 bip39
+tags: key derivation function hkdf pbkdf2 bip39 argon2
 section:
   - name: openssl
     commands:
