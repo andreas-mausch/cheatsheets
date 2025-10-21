@@ -5,6 +5,11 @@ layout: default
 
   <a href="{{ site.baseurl }}{% link index.html %}" class="cheatsheet-link">&lt;- Back</a>
 
+  <div class=""cheatsheet-tags">
+    {% for tag in page.tags %}
+    <span class="cheatsheet-tag">#{{ tag }}</span>
+    {% endfor %}
+  </div>
   <h1>
     {% if page.logo %}
       <img class="cheatsheet-logo" src="{{ page.logo }}">
