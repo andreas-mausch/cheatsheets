@@ -11,7 +11,7 @@ section:
       Complete wipe via dd (will destroy all data): sudo dd if=/dev/urandom of=/dev/sdX bs=8M iflag=fullblock status=progress
   - name: Generate key
     commands:
-      via openssl and argon2: openssl kdf -binary -keylen 64 -kdfopt pass:(read --prompt-str 'Enter your password: ') -kdfopt salt:'HDD|Serial:123456789' -kdfopt iter:4 -kdfopt memcost:262144 -kdfopt lanes:4 Argon2id
+      via openssl and argon2: "openssl kdf -binary -keylen 64 -kdfopt pass:(read --prompt-str 'Enter your password: ') -kdfopt salt:'HDD|Serial:123456789' -kdfopt iter:4 -kdfopt memcost:262144 -kdfopt lanes:4 Argon2id"
   - name: Open disk
     commands:
       open: sudo cryptsetup open --type=plain --cipher=aes-xts-plain64 --key-file=./keyfile.bin --key-size=512 --keyfile-size=64 --offset=0 --hash=plain /dev/sdX my_container
