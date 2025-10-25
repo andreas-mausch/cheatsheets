@@ -9,11 +9,11 @@ section:
         options:
           -a: "--archive: equals -rlptgoD (no -H,-A,-X)"
           -v: "--verbose"
-          "--info=progress2": Best way to show total progress
-          "--info=name0": Hide filenames for cleaner output
           -A: "--acls: preserve ACLs (implies -p)"
           -X: "--xattrs: preserve extended attributes"
           -h: "--human-readable"
+          "--info=progress2": Best way to show total progress
+          "--info=name0": Hide filenames for cleaner output
           -r: "--recursive"
           -l: "--links: copy symlinks as symlinks"
           -p: "--perms: preserve permissions"
