@@ -35,6 +35,7 @@ section:
       via lshw: sudo lshw -class disk -short
       via inxi: sudo inxi -Dxxd
       via udevadm: bash -c 'for dev in /dev/sd? /dev/nvme?n1; do udevadm info --query=all --name="$dev" | grep -E "DEVNAME|ID_SERIAL"; echo ---; done'
+      via nvme: nvme list
   - name: Show USB devices
     commands:
       List devices: lsusb [--tree --verbose]
