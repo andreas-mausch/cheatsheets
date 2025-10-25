@@ -23,9 +23,11 @@ section:
           -D: "same as --devices --specials"
           --devices: preserve device files (super-user only)
           --specials: preserve special files
+      - title: Copy as the current user
+        command: sudo rsync -rltvXh --info=progress2 --info=name0 /mnt/source/ /mnt/target/
 ---
 
-Optional extra commands:
+Optional extra arguments:
 
 - -z: --compress
 - -P: --partial (continues files)
