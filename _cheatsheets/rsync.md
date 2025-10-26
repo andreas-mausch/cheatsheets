@@ -27,12 +27,48 @@ section:
         command: sudo rsync -rltvXh --info=progress2 --info=name0 /mnt/source/ /mnt/target/
 ---
 
-Optional extra arguments:
+# Optional extra arguments
 
-- -z: --compress
-- -P: --partial (continues files)
-- -H: --hard-links (preserve hard links)
-- --ignore-existing / --ignore-non-existing (= --existing)
+- `-n`: `--dry-run`
+- `-i`: `--itemize-changes`
+- `-z`: `--compress`
+- `-P`: `--partial` (continues files)
+- `-H`: `--hard-links` (preserve hard links)
+- `--ignore-existing` / `--ignore-non-existing` (= `--existing`)
+
+# Itemize Changes
+
+<https://stackoverflow.com/questions/4493525/what-does-f-mean-in-rsync-logs>
+
+<https://dev.to/alexisayenko/understanding-rsync-itemize-changes-5fgi>
+
+The log output can be interpreted like this:
+
+## >f.st......
+
+```
+> - the item is received
+f - it is a regular file
+s - the file size is different
+t - the time stamp is different
+```
+
+## .d..t......
+
+```
+. - the item is not being updated (though it might have attributes
+    that are being modified)
+d - it is a directory
+t - the time stamp is different
+```
+
+## >f+++++++++
+
+```
+> - the item is received
+f - a regular file
++++++++++ - this is a newly created item
+```
 
 # For copying system drives
 
