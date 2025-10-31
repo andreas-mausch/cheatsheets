@@ -35,6 +35,7 @@ section:
 - `-P`: `--partial` (continues files)
 - `-H`: `--hard-links` (preserve hard links)
 - `--ignore-existing` / `--ignore-non-existing` (= `--existing`)
+- `--rsync-path="sudo rsync"`: Use sudo to access root files
 
 # Itemize Changes
 
