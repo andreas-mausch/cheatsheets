@@ -5,6 +5,10 @@ section:
   - name: Generation
     commands:
       Generate PDF from string: gs -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=test.pdf (echo -e "@color{0.5 0 0} @font{Courier-Bold36} \n\n\n foo" | enscript --no-header -e@ -p - | psub)
+      Generate PDF from .png images with OCR text recognition: img2pdf *.png | ocrmypdf --rotate-pages --rotate-pages-threshold=10.0 --language deu+eng - out.pdf
+  - name: Optimization
+    commands:
+      Reduce file size: gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dDownsampleColorImages=true -dColorImageResolution=120 -dGrayImageResolution=120 -dMonoImageResolution=150 -dJPEGQ=65 -dNOPAUSE -dBATCH -sOutputFile=output.pdf input.pdf
   - name: Decryption
     commands:
       Remove password from protected .pdf file: qpdf --decrypt protected.pdf --password=<your-password> out.pdf
