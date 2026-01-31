@@ -7,6 +7,7 @@ section:
     commands:
       list volumes: docker volume ls --filter driver=local --filter name="dev_" --format "{{.Name}}"
       show disk usage / volume sizes: docker system df [--verbose]
+      sort volumes by size: docker system df -v --format json | jq -r '.Volumes[] | [.Size,.Name] | @tsv' | sort -h
       prune: docker system prune [--volumes] [--all]
       delete old images: docker image prune --all --filter "until=$(date +'%Y-%m-%dT%H:%M:%S' --date='-365 days')"
       show stopped containers: docker container ls -f status=exited -a
