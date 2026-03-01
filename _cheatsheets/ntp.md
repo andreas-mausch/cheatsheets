@@ -12,6 +12,7 @@ section:
       Just query and display the server time: ntpdate -q time.nist.gov
       Show hardware clock: sudo hwclock --show
       Show time information: timedatectl status
+      Show NTP server in use: timedatectl show-timesync --all
       Query ntpd: ntpdc -c sysinfo
   - name: Services
     commands:
