@@ -27,6 +27,7 @@ Therefore, I
 
 1. removed the file `sudo rm /crypto_keyfile.bin`
 1. deleted the reference in `/etc/mkinitpcio.conf`
+1. deleted another reference in `/etc/crypttab` and replaced it by `none`.
 1. rebuild initramfs via `sudo mkinitpcio -P`
 1. find the corresponding key slot
    I have used `sudo cryptsetup --verbose open --test-passphrase /dev/nvme0n1p2` to find the passphrase
