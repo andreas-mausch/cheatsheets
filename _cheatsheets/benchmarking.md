@@ -20,3 +20,4 @@ Tests are run on battery mode in balanced or powersave profile.
 | stress-ng | 0.20.01     | MacBook 12 2017  | Intel Core i5-7Y54    | 1.123           | 2.559          |
 | stress-ng | 0.20.01     | Dell XPS 13 9310 | Intel Core i7-1185G7  | 2.960           | 8.360          |
 | stress-ng | 0.20.01     | MacBook Air 2020 | M1                    | 3.099           | 18.486         |
+| stress-ng | 0.19.02     | GMKtec G6        | AMD Ryzen 3 5425U     | 1.047           | 5.419          |
