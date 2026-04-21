@@ -49,6 +49,12 @@ Add this section to the markdown:
 logo: data:image/svg+xml;base64,XXXX
 ```
 
+You can use `svgo` to reduce the size:
+
+```bash
+svgo logo.big.svg -o logo.svg
+```
+
 Replace *XXXX* by the output of this command:
 
 ```bash
