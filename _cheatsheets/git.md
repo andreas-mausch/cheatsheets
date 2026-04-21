@@ -16,14 +16,9 @@ section:
     commands:
       Revert last 3 commits: git revert --no-commit HEAD~3..
       Undo last local commit, but keep changes: git reset HEAD~
-  - name: History
+  - name: Commit hash
     commands:
-      Show file at commit hash: git show 24a255c1:src/main.rs
-      Show file at absolute date: git show HEAD@{2013-02-25}:src/main.rs
-      Show file at relative date: git show HEAD@{3 days ago}:src/main.rs
-      For date older than 90 days: git show (git rev-list -1 --before="2024-07-13" HEAD):src/main.rs
       Shorten commit hash: git rev-parse --short d6f8e95b7bc1f5dcde6c8892bca8fe9c7a5b32d2
-      Restore file to previous version at revision: git checkout 24a255c1 -- file/to/restore
   - name: Prune remote branches
     commands:
       Only prune remote branches: git remote prune origin
@@ -67,7 +62,6 @@ section:
     commands:
       by Date and author: git lg --after={2016-09-01} --before={2016-10-01} --author="Andreas Mausch"
       since/until: git lg --since="2 year ago" [--until="3 weeks ago"]
-      Diff from yesterday: git diff @{yesterday}..HEAD
       Another variant: git whatchanged --since="1 day ago" -p
   - name: Feature branches
     commands:
@@ -82,17 +76,8 @@ section:
   - name: Create patch
     commands:
       Specific commit: git format-patch -1 <hash>
-      Unstaged changes: git diff
-      Staged changes: git diff --staged
-      Both (unstaged and staged) changes: git diff HEAD
       Multiple commits into single file: git format-patch origin/master..HEAD --stdout > commits.patch
       Apply multiple commits file: git am commits.patch
-  - name: Changes between branches
-    commands:
-      Summary (filenames and amount of changes): git diff --compact-summary branch..master
-    shortcuts:
-      Jump to next file: <kbd>n</kbd>
-      Jump to previous file: <kbd>N</kbd>
   - name: Encoding
     commands:
       Show umlauts in filenames: git config --global core.quotepath false
