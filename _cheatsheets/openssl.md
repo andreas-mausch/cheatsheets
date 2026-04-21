@@ -10,15 +10,6 @@ section:
       Print enddate only: openssl x509 -enddate -noout -in certificate.crt
       .p12 info: openssl pkcs12 [-nokeys] -info -in certificate.p12
       .p12 enddate: openssl pkcs12 -in certificate.p12 -nodes | openssl x509 -noout -enddate
-  - name: Remote server
-    commands:
-      Show certificate information from website: openssl s_client -showcerts -connect google.com:443 </dev/null 2>/dev/null
-      Save certificate from website: openssl s_client -showcerts -connect google.com:443 </dev/null 2>/dev/null | openssl x509 -outform PEM > certificate.crt
-      Save certificate from website (via wget): wget https:/google.com:443 --ca-certificate=certificate.crt
-  - name: TLS
-    commands:
-      Send http request to https server: cat request.http | ncat --ssl example.com 443
-      Verify TLS certificate of host: ncat -vvv --ssl-verify nuc 25
   - name: Hashing
     commands:
       sha256: echo -n "hello world" | openssl dgst -sha256
@@ -27,5 +18,7 @@ section:
     commands:
       hmac: echo -n "hello world" | openssl dgst -sha512 -hmac "mykey"
 ---
+
+See also the *tls* page for SSL/TLS.
 
 See also the *key derivation* page for PBKDF2-HMAC-SHA-512.
