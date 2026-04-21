@@ -21,5 +21,5 @@ section:
       ncat: cat request.http | ncat --ssl example.com 443
 ---
 
-`==bundle` is used to store the whole certificate chain.
+`--bundle` is used to store the whole certificate chain.
 If you are only interested in the server certificate itself, you can omit the parameter.
