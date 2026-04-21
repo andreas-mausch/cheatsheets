@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: messaging
+tags: messaging queues broker plumber
 logo: data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcxcHgiIGhlaWdodD0iMjcxcHgiIHZpZXdCb3g9Ii03LjUgMCAyNzEgMjcxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj48cGF0aCBkPSJNMjQ1LjQ0IDEwOC4zMDhoLTg1LjA5YTcuNzM4IDcuNzM4IDAgMCAxLTcuNzM1LTcuNzM0di04OC42OEMxNTIuNjE1IDUuMzI3IDE0Ny4yOSAwIDE0MC43MjYgMGgtMzAuMzc1Yy02LjU2OCAwLTExLjg5IDUuMzI3LTExLjg5IDExLjg5NHY4OC4xNDNjMCA0LjU3My0zLjY5NyA4LjI5LTguMjcgOC4zMWwtMjcuODg1LjEzM2MtNC42MTIuMDI1LTguMzU5LTMuNzE3LTguMzUtOC4zMjVsLjE3My04OC4yNDFDNTQuMTQ0IDUuMzM3IDQ4LjgxNyAwIDQyLjI0IDBIMTEuODlDNS4zMjEgMCAwIDUuMzI3IDAgMTEuODk0VjI2MC4yMWMwIDUuODM0IDQuNzI2IDEwLjU2IDEwLjU1NSAxMC41NkgyNDUuNDRjNS44MzQgMCAxMC41Ni00LjcyNiAxMC41Ni0xMC41NlYxMTguODY4YzAtNS44MzQtNC43MjYtMTAuNTYtMTAuNTYtMTAuNTZ6bS0zOS45MDIgOTMuMjMzYzAgNy42NDUtNi4xOTggMTMuODQ0LTEzLjg0MyAxMy44NDRIMTY3LjY5Yy03LjY0NiAwLTEzLjg0NC02LjE5OS0xMy44NDQtMTMuODQ0di0yNC4wMDVjMC03LjY0NiA2LjE5OC0xMy44NDQgMTMuODQ0LTEzLjg0NGgyNC4wMDVjNy42NDUgMCAxMy44NDMgNi4xOTggMTMuODQzIDEzLjg0NHYyNC4wMDV6IiBmaWxsPSIjRjYwIi8+PC9zdmc+
 section:
   - name: Exchanges
@@ -20,6 +20,7 @@ section:
     commands:
       Publish: rabbitmqadmin publish exchange=my-exchange routing_key=my-routing-key properties="{\"delivery_mode\":2}" payload='test'
       Get: rabbitmqadmin get queue=my-queue ackmode=ack_requeue_true --depth=4
+      via plumber: plumber read rabbit --address="amqp://guest:guest@localhost:5672" --exchange-name=test-exchange --queue-name=test-queue --binding-key='*' --continuous
   - name: Docker
     commands:
       run: docker run -it --name rabbitmq --rm -p 5672:5672 -p 15672:15672 rabbitmq:3.8-management
@@ -45,3 +46,12 @@ Possible values for `ackmode`:
 | reject_requeue_false | Reject requeue false      |
 
 `--depth` is needed to display message headers.
+
+# rabbitmqadmin vs. plumber
+
+`rabbitmqadmin` uses the RabbitMQ HTTP API, while `plumber` uses AMQP.
+
+I like the latter better:
+
+- HTTP API might not be available or exposed.
+- Your real apps typically also speak AMQP.
