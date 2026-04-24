@@ -47,3 +47,27 @@ section:
 
 `--bundle` is used to store the whole certificate chain.
 If you are only interested in the server certificate itself, you can omit the parameter.
+
+# HTTPS server
+
+A HTTPS web server should send it's `server.crt` and most likely a `intermediate.crt` in
+it's responses.
+The Root CA should be installed on the client's OS or browser and not be sent by the server.
+
+```bash
+cat server.crt intermediate.crt > server-and-intermediate.crt
+```
+
+Then for example your nginx config might look like this:
+
+```
+server {
+
+listen 443 ssl;
+ssl_certificate /etc/ssl/server-and-intermediate.crt;
+ssl_certificate_key /etc/ssl/server.key;
+
+[...]
+```
+
+Note: For nginx the order is important: The server.crt must come first.
