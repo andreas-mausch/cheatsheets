@@ -12,7 +12,7 @@ section:
   - name: List
     commands:
       List public keys: gpg --list-public-keys --keyid-format long
-      List private keys: gpg --list-secret-keys --keyid-format long --with-keygrip --with-subkey-fingerprints --list-options show-unusable-subkeys
+      List private keys: gpg --list-secret-keys --keyid-format long --with-keygrip --with-subkey-fingerprints --list-options=show-unusable-subkeys,show-pref-verbose
       Extract image from key: gpg --list-options show-photos --photo-viewer "cat > <path>/0x%k.%t" --list-keys [key_identifier]
   - name: Sign and verify
     commands:
