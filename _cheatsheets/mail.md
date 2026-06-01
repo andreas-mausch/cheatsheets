@@ -5,5 +5,5 @@ logo: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9z
 section:
   - name: msmtp
     commands:
-      Send email: "printf 'From: from@test.com\nTo: to@test.com\nSubject: Test\n\nHello world.' | msmtp --debug --host=localhost --port=1025 --tls=off --auth=off --domain=test.com --read-envelope-from --read-recipients"
+      Send email: "printf 'From: from@test.com\\nTo: to@test.com\\nSubject: Test\\n\\nHello world.' | msmtp --debug --host=localhost --port=1025 --tls=off --auth=off --domain=test.com --read-envelope-from --read-recipients"
 ---
