@@ -13,11 +13,14 @@ section:
     commands:
       via openssl: openssl s_client -showcerts -connect google.com:443 </dev/null 2>/dev/null
       via step: step-cli certificate inspect --bundle https://google.com
-      Verify TLS certificate of host: ncat -vvv --ssl-verify google.com 443
   - name: Extract certificate information from website to disk (X.509 / PEM)
     commands:
       via openssl: openssl s_client -showcerts -connect google.com:443 </dev/null 2>/dev/null | openssl x509 -outform PEM > certificate.crt
       via step: step-cli certificate inspect --bundle --format pem https://google.com > certificate.crt
+  - name: Verify certificate with chain
+    commands:
+      via step: step-cli certificate verify --roots=root.crt server.crt
+      Verify TLS certificate of host: ncat -vvv --ssl-verify google.com 443
   - name: PKCS#12 bundle
     commands:
       .p12 info: openssl pkcs12 -in bundle.p12 [-nokeys] -info
