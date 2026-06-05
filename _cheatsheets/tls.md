@@ -6,7 +6,7 @@ section:
   - name: Show certificate information from file (X.509 / PEM)
     commands:
       via openssl: openssl x509 -text -noout -in certificate.crt
-      via step: step-cli certificate inspect certificate.crt --short --bundle
+      via step: step-cli certificate inspect --short --bundle certificate.crt
       Print subject only: openssl x509 -subject -noout -in certificate.crt
       Print enddate only: openssl x509 -enddate -noout -in certificate.crt
   - name: Show certificate information from website
