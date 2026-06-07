@@ -27,6 +27,11 @@ section:
         command: sudo rsync -rltvXh --info=progress2 --info=name0 /mnt/source/ /mnt/target/
 ---
 
+# Note about slashes after directory
+
+> A trailing slash on a source path means "copy the contents of this directory".
+> Without a trailing slash it means "copy the directory".
+
 # Optional extra arguments
 
 - `-n`: `--dry-run`
