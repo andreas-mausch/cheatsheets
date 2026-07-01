@@ -6,13 +6,19 @@ section:
   - name: Shebang
     commands:
       - title: My favorite shebang
-        command: '#!/usr/bin/env -S bash -e -x'
+        command: '#!/usr/bin/env -S bash -euo pipefail'
         options:
           -S: "--split-string: process and split S into separate arguments; used to pass multiple arguments on shebang lines"
-          -e: Exit immediately if a command fails
+          -e: errexit, exit immediately if a command fails
+          -u: nounset, treats unset variables as an error
+          -o pipefail: prevents errors in a pipeline from being masked
           -x: Print a trace of simple commands
 ---
 
 The Set Builtin:
 
 <https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html>
+
+While env -S is standard on modern Linux (GNU coreutils) and macOS,
+it is not POSIX-compliant. Older Unix systems or stripped-down busybox
+environments may not support -S.
