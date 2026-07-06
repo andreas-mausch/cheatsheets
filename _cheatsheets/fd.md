@@ -9,6 +9,7 @@ section:
     commands:
       Delete files by pattern: fd "pattern" -x echo rm -v --
       Clean up empty directories: fd "pattern" --type empty --type directory --bottom-up -x echo rmdir --
+      Clean up macOS dot files (like dot_clean): fd -H '^\._' -x echo rm --
   - name: Last change
     commands:
       Show all files changed within the last year: fd --changed-within 1year -X eza --sort=modified
