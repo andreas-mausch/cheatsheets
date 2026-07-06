@@ -1,6 +1,6 @@
 ---
 layout: cheatsheet
-tags: filetypes files search
+tags: filetypes files search eza
 section:
   - name: File sizes
     commands:
