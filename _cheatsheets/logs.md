@@ -8,7 +8,7 @@ section:
       - title: Favorite command
         command: sudo journalctl -b -e -f -p=info -u=docker
         options:
-          -b: "--boot: Only show logs since the current boot. Pass -1 to show previous boot, leave the parameter out to see everything.""
+          -b: "--boot: Only show logs since the current boot. Pass -1 to show previous boot, leave the parameter out to see everything."
           -e: "--pager-end: Immediately jump to the end of the journal"
           -f: "--follow: Show only the most recent journal entries, and continuously print new entries as they are appended to the journal"
           -p: "--priority: Filter by minimum priority. Allowed values: emerg (0), alert (1), crit (2), err (3), warning (4), notice (5), info (6), debug (7)"
