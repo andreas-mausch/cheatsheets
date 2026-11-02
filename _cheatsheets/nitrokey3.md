@@ -41,64 +41,23 @@ section:
         command: nitropy nk3 set-config --dry-run <key> <value>
       - title: set a field nitropy does not know
         command: nitropy nk3 set-config --force <key> <value>
-        source: https://github.com/Nitrokey/pynitrokey/blob/main/pynitrokey/cli/trussed_init.py
+        source: https://github.com/Nitrokey/pynitrokey/blob/main/pynitrokey/cli/trussed/__init__.py
       - title: is the OpenPGP app using the secure element?
         command: nitropy nk3 get-config opcard.use_se050_backend
       - title: note
         command: "Changing config can have side effects. The device reboots automatically if needed."
-  - name: PIV (experimental)
-    commands:
-      - title: initialize the PIV application (prints the GUID)
-        command: nitropy nk3 piv --experimental init <admin-key>
-      - title: show PIV info (GUID, reader, serial)
-        command: nitropy nk3 piv --experimental info
-      - title: authenticate as admin (management key)
-        command: nitropy nk3 piv --experimental admin-auth [admin-key-hex]
-      - title: change the PIN
-        command: nitropy nk3 piv --experimental change-pin
-        options:
-          --new-pin: 6-8 decimal digits
-      - title: change the PUK
-        command: nitropy nk3 piv --experimental change-puk
-        options:
-          --new-puk: 8 characters
-      - title: unblock a blocked PIN (asks for PUK + new PIN)
-        command: nitropy nk3 piv --experimental reset-retry-counter
-      - title: change the management key
-        command: nitropy nk3 piv --experimental change-admin-key --current-admin-key <hex> <new-hex>
-        options:
-          "--current-admin-key": "defaults to the published NIST key 0102030405060708... - change it!"
-      - title: generate a key, self-signed certificate and CSR
-        command: nitropy nk3 piv --experimental generate-key --key 9A --algo nistp256 --subject-name "CN=me" --subject-alt-name-upn me@example.com --path 9a.csr
-        options:
-          --algo: "nistp256 (default), nistp384, rsa2048, rsa3072, rsa4096 - docs certify only rsa2048 + nistp256"
-          --path: where to write the DER CSR (default stdout)
-      - title: write a certificate to a slot
-        command: nitropy nk3 piv --experimental write-certificate <admin-key-hex> --key 9A --format pem --path cert.crt
-      - title: import a key and certificate from a .p12
-        command: nitropy nk3 piv --experimental import-key --key 9A --path cert.p12
-        options:
-          --path: password-less .p12, RSA-2048 only
-      - title: read a certificate
-        command: nitropy nk3 piv --experimental read-certificate --key 9A --path cert.crt
-      - title: list all certificates
-        command: nitropy nk3 piv --experimental list-certificates
-      - title: altSecurityIdentities string for Windows AD login
-        command: nitropy nk3 piv --experimental get-windows-auth-mapping
-      - title: note
-        command: "Needs pynitrokey[pcsc] and a running pcscd. Experimental - do not rely on it. Change PIN, PUK and management key before use; a blocked PUK only clears with a factory reset (see the factory reset workflow)."
   - name: Troubleshooting
     commands:
       no device found: lsusb | grep 20a0:42b2
-      no permission on /dev/hidrawX: sudo chmod 660 /dev/hidraw0 && sudo chown root:plugdev /dev/hidraw0
-      add the user to plugdev: sudo usermod -aG plugdev $USER
+      no permission on /dev/hidrawX (temporary, lost on replug): sudo setfacl -m u:$USER:rw /dev/hidraw0
+      persistent group fix (plugdev is Debian/Ubuntu only): sudo usermod -aG plugdev $USER
       watch udev events: udevadm monitor --property --udev
       find the USB product ID for a udev rule: "udevadm info -a -n /dev/hidraw0 | grep -i product"
       is the card visible to PC/SC (shows OpenPGP and PIV applets): pcsc_scan
       list readers the OpenSC way: opensc-tool --list-readers
       list PKCS#11 modules: p11-kit list-modules
       dump PKCS#11 objects: p11tool --list-all
-      stop pcscd from grabbing the card (breaks gpg): sudo systemctl stop pcscd
+      pcscd and gpg conflict over the card - hand it to gpg: sudo systemctl stop pcscd
       kill a running pcscd: sudo pkill pcscd
       gpg cannot see the card: gpgconf --kill gpg-agent dirmngr scdaemon && gpg --card-status
       raw APDU debugging: gpg --debug-level expert --card-edit
@@ -129,7 +88,7 @@ reset on its own.
 | SSH login                | SSH via `gpg-agent`           | card's auth key serves OpenSSH              | `gpg-agent`                      | `enable-ssh-support`                                          |
 | One-time passwords       | TOTP / HOTP (RFC 6238/4226)   | time- or counter-based codes                | `nitropy nk3 secrets`            | 6/8 digits, SHA1/256, per-entry touch or PIN                  |
 | Passwords                | secrets app (proprietary)     | static logins and passwords                 | `nitropy nk3 secrets`            | up to 50 entries                                              |
-| Challenge-response       | HMAC-SHA1/SHA256              | KeePassXC keyfile protection                | `nitropy nk3 secrets`            | 2 slots; FIDO2 credentials can also carry HMAC-secret         |
+| Challenge-response       | HMAC-SHA1 (Yubico-compatible) | KeePassXC keyfile protection                | `nitropy nk3 secrets`            | 2 slots; FIDO2 credentials can also carry HMAC-secret         |
 | Windows / TLS login      | PIV (NIST SP 800-73)          | key slots with X.509 certificates           | `nitropy nk3 piv --experimental` | experimental, up to 24 key pairs                              |
 | Generic token API        | PKCS#11 (cryptoki)            | exposes keys to non-GnuPG apps              | `p11-kit`, `p11tool`, OpenSC     | browsers, PAM, OpenSSL - conflicts with scdaemon              |
 | Raw APDUs                | ISO 7816                      | direct applet access through pcscd          | `opensc-tool`, `pcsc_scan`       | escape hatch, e.g. PIV factory reset                          |
@@ -345,7 +304,7 @@ the "can't scan the QR code?" link, and write the Base32 secret to the device:
 nitropy nk3 secrets status
 nitropy nk3 secrets set-pin   # min 6 characters
 nitropy nk3 secrets add-otp github JBSWY3DPEHPK3PXP --kind TOTP
-echo <secret> | nitropy nk3 secrets add-otp github - --kind TOTP
+nitropy nk3 secrets add-otp github "$(cat)" --kind TOTP   # no '-' stdin - source it via substitution
 ```
 
 Only have the QR image? Extract the secret first - nitropy does not parse
@@ -388,7 +347,7 @@ Same store and PIN as TOTP, up to 50 entries:
 
 ```bash
 nitropy nk3 secrets status
-nitropy nk3 secrets add-password email me@example.com --password <password>
+nitropy nk3 secrets add-password email --login me@example.com --password <password>
 nitropy nk3 secrets get-password email --password
 ```
 
@@ -408,7 +367,7 @@ nitropy nk3 secrets update github --touch-button false # or --metadata <string>
 ### KeePassXC (challenge-response)
 
 ```bash
-nitropy nk3 secrets add-challenge-response 1 <secret> --digest SHA1   # slot 1 or 2
+nitropy nk3 secrets add-challenge-response 1 <secret>   # slot 1 or 2; secret decodes to exactly 20 bytes
 ```
 
 The Nitrokey App 2 has a KeePassXC wizard that does this graphically.
@@ -425,12 +384,13 @@ in the `gpg/card>` table above.
 
 In `gpg/card>`: `passwd` -> (1) user PIN, `admin` + `passwd` -> (3) admin PIN -
 change both factory defaults (`123456` / `12345678`) before real use. (4) sets
-an optional reset code, which unblocks the user PIN via `gpg/card>` → `unblock`
+an optional reset code, which unblocks the user PIN via `gpg/card>` -> `unblock`
 without exposing the admin PIN. `admin` + `passwd` -> (2) also unblocks the
 user PIN, and with the admin counter at zero there is no unlock left - factory
-reset the OpenPGP app. Non-interactive (GnuPG >= 2.6): `gpg-card passwd
---user-pin <new-pin>`, `gpg-card passwd --admin-pin <new-pin>`,
-`gpg-card reset-code`.
+reset the OpenPGP app. From the shell (gpg-card): `gpg-card passwd 1` (user) /
+`gpg-card passwd 3` (admin) - the PINs themselves are still entered via
+pinentry, and the reset code has no own command (it is option 4 of the `passwd`
+menu).
 
 ### Move an existing key to the card
 
@@ -461,11 +421,11 @@ Inside `gpg>`:
 | `key 1` then `key 2`              | `keytocard` -> `3` | Authentication |
 | Finish                            | `quit` -> `y`      |                |
 
-Then set the card metadata: `gpg/card>` → `admin`, `name`, `url`.
+Then set the card metadata: `gpg/card>` -> `admin`, `name`, `url`.
 
 ### Generate a new key on the card
 
-`gpg --card-edit` → `admin`, `name`, `url`, then `generate`. Prompts for name,
+`gpg --card-edit` -> `admin`, `name`, `url`, then `generate`. Prompts for name,
 email and a passphrase; generates all three keys (sign, encrypt, auth) on the
 card - they **never leave the device**, so the backup.asc trick above is not
 available afterwards.
@@ -485,8 +445,8 @@ then `generate` again. Other curves per the algorithm table above.
 The Nitrokey 3 has a touch sensor, so every key operation can additionally
 require a button press. In `gpg --card-edit --expert`: `uif 1 on` (sign),
 `uif 2 on` (decrypt), `uif 3 on` (auth); `off` disables, `permanent` locks the
-requirement in so it **can never be turned off**. Non-interactive (GnuPG >=
-2.6): `gpg-card uif 1 on`. The current setting shows in the card status output.
+requirement in so it **can never be turned off**. From the shell (gpg-card):
+`gpg-card uif 1 on`. The current setting shows in the card status output.
 
 ### Use the card on another machine
 
@@ -495,7 +455,7 @@ gpg --import pubkey.asc        # public key only
 gpg --card-status              # links local keyring to card keys
 ```
 
-Or if you set a URL on the card: `gpg/card>` → `fetch`.
+Or if you set a URL on the card: `gpg/card>` -> `fetch`.
 
 ### Export the public key
 
@@ -503,7 +463,7 @@ Or if you set a URL on the card: `gpg/card>` → `fetch`.
 gpg --armor --export <key> > pubkey.asc
 ```
 
-Deleting a key from the card: `gpg/card>` → `admin`, `erase`. To restore a
+Deleting a key from the card: `gpg/card>` -> `admin`, `erase`. To restore a
 backup onto a fresh card: import `backup.asc`, then `keytocard` as above.
 
 ### LUKS disk unlock
@@ -512,7 +472,7 @@ Store a LUKS keyfile encrypted to the card's GPG key - the passphrase prompt
 is replaced by the card PIN:
 
 ```bash
-gpg --decrypt cryptkey.gpg | sudo cryptsetup open --key-file - <device>
+gpg --decrypt cryptkey.gpg | sudo cryptsetup open --key-file - <device> <name>
 sudo cryptsetup luksChangeKey <device>      # change the LUKS passphrase
 sudo cryptsetup luksRemoveKey <device>      # remove a key slot
 ```
@@ -533,14 +493,14 @@ printf 'export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"\n' >> ~/.
 ```
 
 ```bash
-ssh-copy-id -i <(gpg --export-ssh-key <key>) user@server
+gpg --export-ssh-key <key> | ssh user@server 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'   # ssh-copy-id -i rejects <(...) pipes
 gpg --export-ssh-key <key> | xclip -selection clipboard   # paste into GitHub etc.
 ssh-add -l
 ```
 
-No GnuPG on the server side needed - it just sees an ed25519 key. FIDO2
-alternative without the OpenPGP app: `ssh-keygen -t ed25519-sk` (OpenSSH >=
-8.1); add `-O verify-required` to make every login confirm by touch.
+No GnuPG on the server side needed - it just sees an ordinary SSH public key.
+FIDO2 alternative without the OpenPGP app: `ssh-keygen -t ed25519-sk` (OpenSSH
+>= 8.1); add `-O verify-required` to make every login confirm by touch.
 
 ## FIDO2 and passkeys
 
@@ -569,7 +529,7 @@ SSOs) are unlimited.
 
 ```bash
 nitropy fido2 verify              # built-in self test
-nitropy fido2 make-credential --host example.com --user me --pin <pin>          # throwaway credential
+nitropy fido2 make-credential --host example.com --user me                       # throwaway credential
 nitropy fido2 challenge-response <cred-id> <challenge> --host example.com       # HMAC-secret proof of possession
 ```
 
@@ -580,17 +540,18 @@ key plus presence.
 ### Login on Linux (pam_u2f)
 
 Simplest full-disk-login option - flag names vary by version, check
-`pam_u2f --help`:
+`pamu2fcfg --help`:
 
 ```bash
-pam_u2f --action register --origin pam://$(hostname)   # writes a credential to the key
+# registers a credential on the key and appends the mapping line to the authfile
+pamu2fcfg --origin=pam://$(hostname) --appid=pam://$(hostname) >> ~/.config/pam_u2f
 ```
 
 then in `/etc/pam.d/login` **above** the unix auth line - and keep a password
 or second admin session working until you have tested it:
 
 ```
-auth sufficient pam_u2f.so origin=pam://<hostname>
+auth sufficient pam_u2f.so origin=pam://<hostname> appid=pam://<hostname>
 ```
 
 ## Sources
@@ -602,4 +563,5 @@ auth sufficient pam_u2f.so origin=pam://<hostname>
 - <https://docs.nitrokey.com/nitrokeys/features/piv/access_control> - PIV PIN/PUK defaults
 - <https://docs.nitrokey.com/nitrokeys/features/piv/key_management> - PIV key slots
 - <https://github.com/Nitrokey/pynitrokey> - `pynitrokey/cli/nk3/piv.py` (default management key, factory-reset error), `pynitrokey/nk3/piv_app.py` (APDUs: PIN ref 0x80, PUK ref 0x81, reset INS 0xFB)
-- <https://www.gnupg.org/documentation/manuals/gnupg26/gpg-card.html>
+- <https://www.gnupg.org/documentation/manuals/gnupg26/gpg-card.1.html>
+- <https://developers.yubico.com/pam-u2f> - pamu2fcfg registration and PAM setup
