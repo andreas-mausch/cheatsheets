@@ -554,6 +554,29 @@ or second admin session working until you have tested it:
 auth sufficient pam_u2f.so origin=pam://<hostname> appid=pam://<hostname>
 ```
 
+## PIV (experimental)
+
+Needs `pynitrokey[pcsc]`, a running `pcscd` and the `--experimental` flag on
+every command. The factory defaults are published (PIN `123456`, PUK
+`12345678`, management key = the NIST key, see the PIN table) - replace them
+before real use; commands taking the admin key default to the published one.
+A blocked PUK only clears with a factory reset (see the factory reset
+workflow).
+
+```bash
+nitropy nk3 piv --experimental init                        # initialize, prints the GUID
+nitropy nk3 piv --experimental change-pin                  # prompts for current + new value
+nitropy nk3 piv --experimental change-puk                  # prompts likewise
+nitropy nk3 piv --experimental reset-retry-counter         # unblock a blocked PIN with the PUK
+nitropy nk3 piv --experimental change-admin-key --current-admin-key <old-hex> <new-hex>
+nitropy nk3 piv --experimental generate-key --key 9A --algo nistp256 --subject-name "CN=me" --path 9a.csr
+nitropy nk3 piv --experimental write-certificate --key 9A --format pem --path cert.crt
+nitropy nk3 piv --experimental list-certificates           # or read-certificate --key 9A
+```
+
+`get-windows-auth-mapping` prints the `altSecurityIdentities` string that maps
+the card to a Windows AD user.
+
 ## Sources
 
 - <https://docs.nitrokey.com/nitrokeys/nitrokey3>
